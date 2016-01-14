@@ -10,7 +10,7 @@ namespace _65Hours.Services.Interfaces
 {
     public interface ISkillService
     {
-        ResultT<Skill> All();
+        ResultT<IEnumerable<Skill>> All();
         ResultT<Skill> GetById(int id);
     }
 }
