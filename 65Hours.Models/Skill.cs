@@ -8,7 +8,7 @@ namespace _65Hours.Models
 {
     public class Skill
     {
-        public int SkillID { get; set; }
+        public int SkillId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
     }

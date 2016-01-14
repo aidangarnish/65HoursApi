@@ -8,9 +8,9 @@ namespace _65Hours.Models
 {
     public class Transaction
     {
-        public int TransactionID { get; set; }
-        public string PaidToUserID { get; set; }
-        public string PaidByUSerID { get; set; }
+        public int TransactionId { get; set; }
+        public string PaidToUserId { get; set; }
+        public string PaidByUSerId { get; set; }
         public DateTime Created { get; set; }
         public int Minutes { get; set; }
         public string Reason { get; set; }

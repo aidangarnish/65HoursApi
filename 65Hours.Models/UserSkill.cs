@@ -12,9 +12,9 @@ namespace _65Hours.Models
         {
             Created = DateTime.UtcNow;
         }
-        public int UserSkillID { get; set; }
-        public string UserID { get; set; }
-        public int SkillID { get; set; }
+        public int UserSkillId { get; set; }
+        public string UserId { get; set; }
+        public int SkillId { get; set; }
         public DateTime Created { get; set; }
     }
 }
