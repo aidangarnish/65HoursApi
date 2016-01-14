@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HoursDbContext.cs" />
+    <Compile Include="HoursRepository.cs" />
+    <Compile Include="Interfaces\IHoursRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
