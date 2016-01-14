@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using _65HoursApi.Providers;
-using _65HoursApi.Models;
 using _65Hours.Repository;
+using System.Web.Http.Cors;
+using Microsoft.Owin.Cors;
 
 namespace _65HoursApi
 {
@@ -22,7 +19,7 @@ namespace _65HoursApi
 
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
-        {
+        {            
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(HoursDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
@@ -63,6 +60,8 @@ namespace _65HoursApi
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            app.UseCors(CorsOptions.AllowAll);
         }
     }
 }

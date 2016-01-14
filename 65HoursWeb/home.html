@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/angular.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/Login/LoginController.js"></script>
+    <script src="app/Login/LoginService.js"></script>
+    <script src="app/Register/RegisterController.js"></script>
+    <script src="app/Register/RegisterService.js"></script>
+    <script src="app/SessionService/SessionService.js"></script>
+    <script src="app/ApplicationController.js"></script>
+</head>
+<body>
+    <h1>65 Hours</h1>
+
+    <div ng-app="angularApp" ng-cloak class="row">
+        <div ng-controller="ApplicationController as applicationCtrl">
+            <div ng-show="applicationCtrl.isAuthenticated">Is authenticated - {{applicationCtrl.userName}}</div>
+            
+            <div ng-controller="RegisterController as registerCtrl" class="col-sm-4">
+                <form ng-submit="registerCtrl.register()" novalidate>
+                    <h3>Register</h3>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control" type="text" ng-model="registerCtrl.email" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input class="form-control" type="password" ng-model="registerCtrl.password" />
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input class="form-control" type="password" ng-model="registerCtrl.password2" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">Register</button>
+
+                    </div>
+                </form>
+            </div>
+
+            <div ng-controller="LoginController as loginCtrl" class="col-sm-4">
+                <h3>Log In</h3>
+                <form ng-submit="loginCtrl.login()" novalidate>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control" type="text" ng-model="loginCtrl.credentials.username" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input class="form-control" type="password" ng-model="loginCtrl.credentials.password" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">Log In</button>
+                        <button ng-click="loginCtrl.logout()" class="btn btn-default">Log Out</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

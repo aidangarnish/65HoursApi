@@ -3,12 +3,17 @@ using _65Hours.Repository;
 using _65Hours.Repository.Interfaces;
 using _65Hours.Services;
 using _65Hours.Services.Interfaces;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.DataHandler;
+using Microsoft.Owin.Security.DataHandler.Encoder;
+using Microsoft.Owin.Security.DataHandler.Serializer;
+using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Practices.Unity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity;
+using System.Web;
 
 namespace _65Hours.DependencyInjection
 {
@@ -42,6 +47,20 @@ namespace _65Hours.DependencyInjection
 
             //services
             container.RegisterType<ISkillService, SkillService>();
+
+            //ASP.Net identity
+            
+            container.RegisterType<UserManager<ApplicationUser>>(new HierarchicalLifetimeManager());
+            container.RegisterType<RoleManager<IdentityRole>>(new HierarchicalLifetimeManager());
+            container.RegisterType<DbContext, HoursDbContext>(new HierarchicalLifetimeManager());
+            container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
+            container.RegisterType<IRoleStore<IdentityRole, string>, RoleStore<IdentityRole>>(new HierarchicalLifetimeManager());
+            container.RegisterType<IAuthenticationManager>(new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
+            container.RegisterType<ISecureDataFormat<AuthenticationTicket>, SecureDataFormat<AuthenticationTicket>>();
+
+            container.RegisterType<ITextEncoder, Base64UrlTextEncoder>();
+            container.RegisterType<IDataSerializer<AuthenticationTicket>, TicketSerializer>();
+            container.RegisterType<IDataProtector>(new InjectionFactory(d => new DpapiDataProtectionProvider().Create("ASP.NET Identity")));
         }
     }
 }

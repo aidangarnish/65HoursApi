@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "65Hours.Services", "65Hours
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "65Hours.DependencyInjection", "65Hours.DependencyInjection\65Hours.DependencyInjection.csproj", "{2F33959C-4722-4975-A3E3-36EC73F06917}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "65HoursWeb", "65HoursWeb\65HoursWeb.csproj", "{750364DF-DF4A-401F-9DC6-09B751426514}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2F33959C-4722-4975-A3E3-36EC73F06917}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F33959C-4722-4975-A3E3-36EC73F06917}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F33959C-4722-4975-A3E3-36EC73F06917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{750364DF-DF4A-401F-9DC6-09B751426514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{750364DF-DF4A-401F-9DC6-09B751426514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{750364DF-DF4A-401F-9DC6-09B751426514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{750364DF-DF4A-401F-9DC6-09B751426514}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
