@@ -18,12 +18,14 @@ namespace _65HoursApi.Controllers
             _skillService = skillService;
         }
 
+        [Route("GetAllSkills")]
         public IEnumerable<Skill> GetAllSkills()
         {
             return _skillService.All().Data;
         }
 
         [Authorize]
+        [Route("GetAllSkillsAuth")]
         public IEnumerable<Skill> GetAllSkillsAuth()
         {
             return _skillService.All().Data;
