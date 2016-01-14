@@ -60,6 +60,11 @@
     <Compile Include="HoursDbContext.cs" />
     <Compile Include="HoursRepository.cs" />
     <Compile Include="Interfaces\IHoursRepository.cs" />
+    <Compile Include="Migrations\201601141556051_initial.cs" />
+    <Compile Include="Migrations\201601141556051_initial.Designer.cs">
+      <DependentUpon>201601141556051_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +76,11 @@
       <Project>{798380df-b24d-4a4b-907e-e7b396da4804}</Project>
       <Name>65Hours.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201601141556051_initial.resx">
+      <DependentUpon>201601141556051_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
