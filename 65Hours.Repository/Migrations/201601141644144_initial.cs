@@ -34,38 +34,38 @@ namespace _65Hours.Repository.Migrations
                 "dbo.Skills",
                 c => new
                     {
-                        SkillID = c.Int(nullable: false, identity: true),
+                        SkillId = c.Int(nullable: false, identity: true),
                         Title = c.String(),
                         Description = c.String(),
                     })
-                .PrimaryKey(t => t.SkillID);
+                .PrimaryKey(t => t.SkillId);
             
             CreateTable(
                 "dbo.Transactions",
                 c => new
                     {
-                        TransactionID = c.Int(nullable: false, identity: true),
-                        PaidToUserID = c.String(),
-                        PaidByUSerID = c.String(),
+                        TransactionId = c.Int(nullable: false, identity: true),
+                        PaidToUserId = c.String(),
+                        PaidByUSerId = c.String(),
                         Created = c.DateTime(nullable: false),
                         Minutes = c.Int(nullable: false),
                         Reason = c.String(),
                         Recommended = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.TransactionID);
+                .PrimaryKey(t => t.TransactionId);
             
             CreateTable(
                 "dbo.UserRequests",
                 c => new
                     {
-                        UserRequestID = c.Int(nullable: false, identity: true),
+                        UserRequestId = c.Int(nullable: false, identity: true),
                         Title = c.String(),
                         Description = c.String(),
-                        UserID = c.String(),
+                        UserId = c.String(),
                         Created = c.DateTime(nullable: false),
                         Modified = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.UserRequestID);
+                .PrimaryKey(t => t.UserRequestId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -120,12 +120,12 @@ namespace _65Hours.Repository.Migrations
                 "dbo.UserSkills",
                 c => new
                     {
-                        UserSkillID = c.Int(nullable: false, identity: true),
-                        UserID = c.String(),
-                        SkillID = c.Int(nullable: false),
+                        UserSkillId = c.Int(nullable: false, identity: true),
+                        UserId = c.String(),
+                        SkillId = c.Int(nullable: false),
                         Created = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.UserSkillID);
+                .PrimaryKey(t => t.UserSkillId);
             
         }
         

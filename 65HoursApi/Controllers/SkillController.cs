@@ -13,15 +13,18 @@ namespace _65HoursApi.Controllers
     public class SkillController : ApiController
     {
         private ISkillService _skillService;
-
-        public SkillController()
-        { }
         public SkillController(ISkillService skillService)
         {
             _skillService = skillService;
         }
 
         public IEnumerable<Skill> GetAllSkills()
+        {
+            return _skillService.All().Data;
+        }
+
+        [Authorize]
+        public IEnumerable<Skill> GetAllSkillsAuth()
         {
             return _skillService.All().Data;
         }
