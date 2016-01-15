@@ -16,10 +16,6 @@ namespace _65HoursApi
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
 
-            //enable cors
-            var corsAttr = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(corsAttr);
-
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
