@@ -7,11 +7,11 @@
 
         var registerService = {};
 
-        registerService.register = function (data) {
+        registerService.register = function (data, config) {
 
             var promise = $http({
                 method: 'POST',
-                url: 'https://localhost:44300/api/Account/Register',
+                url: config.hoursApiUrl + '/api/Account/Register',
                 headers: {
                     contentType: 'application/json; charset=utf-8'
                 },

@@ -7,10 +7,10 @@
 
         var loginService = {};
 
-        loginService.login = function (credentials) {
+        loginService.login = function (credentials, config) {
             var promise = $http({
                 method: 'POST',
-                url: 'https://localhost:44300/Token',
+                url: config.hoursApiUrl + '/Token',
                 data: "userName=" + credentials.username +
                      "&password=" + credentials.password +
                      "&grant_type=password",

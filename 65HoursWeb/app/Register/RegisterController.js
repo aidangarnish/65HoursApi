@@ -2,7 +2,7 @@
 
     var appRegister = angular.module('appRegister', []);
 
-    appRegister.controller('RegisterController', ['$http', 'RegisterService', function ($http, RegisterService) {
+    appRegister.controller('RegisterController', ['config', '$http', 'RegisterService', function (config, $http, RegisterService) {
 
         this.register = function () {
             var data = {
@@ -10,7 +10,7 @@
                 Password: this.password,
                 ConfirmPassword: this.password2
             };
-            RegisterService.register(data);
+            RegisterService.register(data, config);
         };
 
     }]);
