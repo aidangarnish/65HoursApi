@@ -66,6 +66,34 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\65hourslogo.jpg" />
+    <Content Include="images\65hourslogo.png" />
+    <Content Include="images\credit_img.jpg" />
+    <Content Include="images\delete-icon.png" />
+    <Content Include="images\five.jpg" />
+    <Content Include="images\four.jpg" />
+    <Content Include="images\ftr_acorn.png" />
+    <Content Include="images\green_bg.jpg" />
+    <Content Include="images\human.png" />
+    <Content Include="images\login_btn.png" />
+    <Content Include="images\login_btn_over.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\one.jpg" />
+    <Content Include="images\pay_img.jpg" />
+    <Content Include="images\prof_img.jpg" />
+    <Content Include="images\register_bg.jpg" />
+    <Content Include="images\reg_btn.gif" />
+    <Content Include="images\reg_btn.png" />
+    <Content Include="images\reg_btn_over.png" />
+    <Content Include="images\reg_img.jpg" />
+    <Content Include="images\search_img.jpg" />
+    <Content Include="images\squirrel.jpg" />
+    <Content Include="images\three.jpg" />
+    <Content Include="images\twitter.png" />
+    <Content Include="images\twitter_bg.jpg" />
+    <Content Include="images\twitter_icon.jpg" />
+    <Content Include="images\two.jpg" />
+    <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -89,7 +117,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="home.html" />
+    <Content Include="test.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
