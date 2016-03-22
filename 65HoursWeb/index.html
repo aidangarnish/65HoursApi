@@ -3,8 +3,90 @@
 <head>
     <title></title>
 	<meta charset="utf-8" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
 </head>
 <body>
+    <div class="container body-content">
+        <div class="row" id="logonnavbar">
+            <div class="col-md-1"></div>
+            <div class="col-md-7">
+                <a alt="home" href="/"><img src="/Images/65hourslogo.png" alt="65 hours" id="logo"></a>
+            </div>
 
+            <div class="col-md-2">
+                <a href="mailto:aidan@65hours.com">CONTACT</a>
+            </div>
+            <div class="col-md-2">
+                <a id="loginimg" title="login" href="login"></a>
+            </div>
+        </div>
+
+       <!-- Page content-->
+        <div class="row">
+            <div class="col-md-12">
+
+                <div id="squirrel">
+                    <div id="intro">
+                        <p>65HOURS IS A TIMEBANK,</p>
+                        <p>A WAY TO PAY FOR SERVICES</p>
+                        <em>WITH TIME RATHER THAN MONEY</em>
+                        <p class="registernow"><a href="register" title="register" id="registernowimg"></a></p>
+                        <div id="preloadregimg"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="howitworks">
+                <p>HOW DOES IT WORK?</p>
+                <ol>
+                    <li>
+                        <div><img src="images/one.jpg" alt="1" />REGISTER</div>
+                        <img src="images/reg_img.jpg" alt="register" />
+                        <p>Create your 65hours account by clicking the Register button above - it only takes a few seconds.</p>
+                    </li>
+                    <li>
+                        <div><img src="images/two.jpg" alt="2" /> PROFILE</div>
+                        <img src="images/prof_img.jpg" alt="complete profile" />
+                        <p>Complete your profile to let people know what skills you have and where you are.</p>
+                    </li>
+                    <li>
+                        <div><img src="images/three.jpg" alt="3" /> SEARCH SKILLS</div>
+                        <img src="images/search_img.jpg" alt="search skills" />
+                        <p>Take a look at what skills other people are offering and if you could make them handy then get in touch.</p>
+                    </li>
+                    <li>
+                        <div><img src="images/four.jpg" alt="4" /> PAY WITH TIME</div>
+                        <img src="images/pay_img.jpg" alt="pay with time" />
+                        <p>Once the job is done pay for it using the credit from your 65hours account.</p>
+                    </li>
+                    <li>
+                        <div><img src="images/five.jpg" alt="5" /> BUILD UP CREDIT!</div>
+                        <img src="images/credit_img.jpg" alt="build credit" />
+                        <p>Build up your credit again by doing jobs for other people.</p>
+                    </li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div id="innerfooter">
+            <img class="ftracorn" alt="acorn" src="/images/ftr_acorn.png" />
+            <div id="footerlinks">
+                <a href="http://twitter.com/65hours">follow us on twitter</a> |
+                <a href="mailto:aidan@65hours.com">contact us</a> |
+                <a href="https://65hours.uservoice.com">leave feedback or suggestions</a>
+            </div>
+            <div id="footeracknowledgements">
+                &copy; All rights reserved 65hours.com
+                <em>development by <a href="http://twitter.com/aidangarnish">aidangarnish</a> | design and illustration by <a href="https://twitter.com/grabbins">grabbins</a></em>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
 </body>
 </html>

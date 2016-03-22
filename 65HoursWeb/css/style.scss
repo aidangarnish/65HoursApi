@@ -1,0 +1,203 @@
+﻿$font-stack: "BebasNeueRegular",Arial,sans-serif;
+$secondary-font-stack: Verdana; 
+$primary-color: #333;
+$primary-background-color: #faf6e8;
+$hours-green-color: #808c7b;
+$hours-dark-brown-color:#5a4a42;
+$hours-medium-brown-color:#856150;
+$nav-text-color: #fff;
+
+@font-face {
+ font-family: 'BebasNeueRegular';
+ src: url('/fonts/BebasNeue-webfont.eot');
+ src: url('/fonts/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+ url('/fonts/BebasNeue-webfont.woff') format('woff'),
+ url('/fonts/BebasNeue-webfont.ttf') format('truetype'),
+ url('/fonts/BebasNeue-webfont.svg#webfontAGQ6uv7S') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+  background-color: $primary-background-color;
+}
+
+header
+{
+    background-color: $hours-green-color;
+    height: 25px;
+    width: 100%;
+}
+header .nav
+{
+    font-size:16px;
+    color: $nav-text-color;
+    background-color: $hours-green-color;
+
+    a{
+        color: $nav-text-color;
+    }
+    li a:hover{
+        background-color: $hours-green-color;
+    }
+}
+header .navbar-nav li a
+{
+    padding:0 20px 0 0;
+    margin:0;
+}
+footer
+{
+    background-color: $hours-green-color;
+    clear: both;
+    color: white;
+    height: 80px;
+    margin-top: -80px;
+    position: relative;
+    font-size:1.8em;
+    img{
+         position:relative;
+    top:-39px;
+    left:1030px;
+    }
+    a{
+         color:White;
+    text-decoration:none;
+    }
+}
+#innerfooter
+{
+    width:1100px;
+    margin-left:auto;
+    margin-right:auto;
+    position:relative;
+    top:15px;
+}
+.ftracorn
+{
+    float:left;
+    clear:left;
+    position:relative;
+    top:-40px;
+    left:1100px;
+    z-index:1;
+}
+#footeracknowledgements
+{
+    color:#cad9c3;
+    padding:20px 0 0 0;
+}
+#footeracknowledgements em
+{
+    padding:0 0 0 320px;
+    font-style:normal;
+}
+#footeracknowledgements a
+{
+    color:White;
+    text-decoration:none;
+}
+#footerlinks
+{
+    padding:0 0 0 0;
+}
+#loginimg
+{
+   background-image: url("../Images/login_btn.png");
+    display: block;
+    background-repeat:no-repeat;
+    height: 40px;
+}
+#loginimg:hover
+{
+    background-image:url('../Images/login_btn_over.png');
+    background-repeat: no-repeat;
+}
+#logonnavbar {
+    font: 4em $font-stack;
+    padding: 30px 0 20px;
+}
+#logonnavbar a
+{
+    text-decoration:none;
+    color:$hours-dark-brown-color;
+    padding:0 30px 0 0;
+}
+#logonnavbar a:hover
+{
+   color:$hours-green-color;
+}
+#howitworks{
+    color:$hours-dark-brown-color;
+    font-size:1.8em;
+    float:left;
+    padding:0 0 20px 30px;
+    
+    p{
+        font-size:1.8em;}
+    
+    ol{
+        list-style: none outside;
+        padding:0;
+    }
+    li{
+        font-size:1.6em;
+        float: left;
+        padding: 0 15px 0 0;
+        width: 225px;
+    }
+    li p{
+        font-size:0.5em;
+        font-family: $secondary-font-stack;
+    }
+}
+
+#squirrel {
+    background-image: url("../images/green_bg.jpg");
+    background-repeat: no-repeat;
+    float: left;
+    height: 545px;
+    width: 110%;
+}
+
+#squirrelreg
+{
+    float:left;
+    width:100%;
+    background-image:url('../images/register_bg.jpg');
+    background-repeat:no-repeat;
+    height:565px;
+}
+#intro
+{
+    float:left;
+    padding:180px 0 0 650px;
+    font: 4.9em 'BebasNeueRegular', Arial, sans-serif;
+    color:$hours-dark-brown-color;
+    line-height:0.8em;
+    p{
+        width:450px;
+    }
+    em{
+        color:$hours-medium-brown-color;
+        font-style:normal;
+    }
+    .registernow{
+        padding:30px 0 0 0;
+    }
+}
+
+#registernowimg
+{
+   background-image: url("../Images/reg_btn.png");
+    display: block;
+    float: left;
+    height: 57px;
+    width: 482px;
+}
+#registernowimg:hover
+{
+    background-image:url('../Images/reg_btn_over.png');
+}
