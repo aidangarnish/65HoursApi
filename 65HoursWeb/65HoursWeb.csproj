@@ -70,6 +70,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\style.css" />
     <Content Include="css\style.min.css" />
+    <Content Include="fonts\BebasNeue-webfont.svg" />
     <Content Include="images\65hourslogo.jpg" />
     <Content Include="images\65hourslogo.png" />
     <Content Include="images\credit_img.jpg" />
@@ -103,6 +104,9 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="css\style.css.map" />
     <Content Include="css\style.scss" />
+    <Content Include="fonts\BebasNeue-webfont.eot" />
+    <Content Include="fonts\BebasNeue-webfont.ttf" />
+    <Content Include="fonts\BebasNeue-webfont.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
