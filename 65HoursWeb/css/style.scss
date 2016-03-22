@@ -22,6 +22,7 @@ body {
   font: 100% $font-stack;
   color: $primary-color;
   background-color: $primary-background-color;
+  padding-top:60px;
 }
 
 header
@@ -30,17 +31,24 @@ header
     height: 25px;
     width: 100%;
 }
-header .nav
+.navbar-inverse 
 {
-    font-size:16px;
-    color: $nav-text-color;
-    background-color: $hours-green-color;
+    background-color:$primary-background-color;
+    border-color:$primary-background-color;
 
-    a{
+    .navbar-nav
+    {
+        padding:10px 0 0 0;
+        font-size:4.5em;
         color: $nav-text-color;
-    }
-    li a:hover{
-        background-color: $hours-green-color;
+        background-color: $primary-background-color;
+
+        li a{
+            color: $hours-dark-brown-color;
+        }
+        li a:hover{
+            color: $hours-green-color;
+        }
     }
 }
 header .navbar-nav li a
@@ -48,6 +56,8 @@ header .navbar-nav li a
     padding:0 20px 0 0;
     margin:0;
 }
+
+
 footer
 {
     background-color: $hours-green-color;
