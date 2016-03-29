@@ -100,6 +100,7 @@
     <Content Include="images\two.jpg" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
+    <Content Include="register.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />

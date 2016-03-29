@@ -5,11 +5,19 @@
   font-weight: normal;
   font-style: normal; }
 
+html {
+  position: relative;
+  min-height: 100%; }
+
 body {
-  font: 100% "BebasNeueRegular", Arial, sans-serif;
+  font: 1em "BebasNeueRegular", Arial, sans-serif;
   color: #333;
   background-color: #faf6e8;
-  padding-top: 60px; }
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
+  height: 100%; }
+  body > .container {
+    padding: 80px 15px 0; }
 
 header {
   background-color: #808c7b;
@@ -33,51 +41,31 @@ header .navbar-nav li a {
   padding: 0 20px 0 0;
   margin: 0; }
 
-footer {
+.footer {
+  position: absolute;
+  bottom: 0;
   background-color: #808c7b;
   clear: both;
   color: white;
   height: 80px;
-  margin-top: -80px;
-  position: relative;
-  font-size: 1.8em; }
-  footer img {
-    position: relative;
-    top: -39px;
-    left: 1030px; }
-  footer a {
+  font-size: 1.8em;
+  width: 100%; }
+  .footer a {
     color: White;
     text-decoration: none; }
 
-#innerfooter {
-  width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  top: 15px; }
-
-.ftracorn {
-  float: left;
-  clear: left;
-  position: relative;
-  top: -40px;
-  left: 1100px;
-  z-index: 1; }
-
 #footeracknowledgements {
   color: #cad9c3;
-  padding: 20px 0 0 0; }
+  padding: 20px 0 0 0;
+  margin-left: auto;
+  margin-right: auto; }
 
 #footeracknowledgements em {
-  padding: 0 0 0 320px;
   font-style: normal; }
 
 #footeracknowledgements a {
   color: White;
   text-decoration: none; }
-
-#footerlinks {
-  padding: 0 0 0 0; }
 
 #loginimg {
   background-image: url("../Images/login_btn.png");
@@ -89,59 +77,32 @@ footer {
   background-image: url("../Images/login_btn_over.png");
   background-repeat: no-repeat; }
 
-#logonnavbar {
-  font: 4em "BebasNeueRegular", Arial, sans-serif;
-  padding: 30px 0 20px; }
-
-#logonnavbar a {
-  text-decoration: none;
-  color: #5a4a42;
-  padding: 0 30px 0 0; }
-
-#logonnavbar a:hover {
-  color: #808c7b; }
-
-#howitworks {
+.howitworks {
   color: #5a4a42;
   font-size: 1.8em;
   float: left;
-  padding: 0 0 20px 30px; }
-  #howitworks p {
+  padding: 0 0 20px 0px; }
+  .howitworks p {
     font-size: 1.8em; }
-  #howitworks ol {
-    list-style: none outside;
-    padding: 0; }
-  #howitworks li {
-    font-size: 1.6em;
+  .howitworks div {
+    font-size: 1.2em;
     float: left;
-    padding: 0 15px 0 0;
-    width: 225px; }
-  #howitworks li p {
+    padding: 0 15px 0 0; }
+  .howitworks div p {
     font-size: 0.5em;
-    font-family: Verdana; }
-
-#squirrel {
-  background-image: url("../images/green_bg.jpg");
-  background-repeat: no-repeat;
-  float: left;
-  height: 545px;
-  width: 110%; }
-
-#squirrelreg {
-  float: left;
-  width: 100%;
-  background-image: url("../images/register_bg.jpg");
-  background-repeat: no-repeat;
-  height: 565px; }
+    font-family: Verdana;
+    padding: 5px; }
+  .howitworks .works-section {
+    padding: 0 0 0 20px; }
+  .howitworks .works-row {
+    width: 100%; }
 
 #intro {
+  padding: 30px 0 30px 0;
   float: left;
-  padding: 180px 0 0 650px;
   font: 4.9em 'BebasNeueRegular', Arial, sans-serif;
   color: #5a4a42;
   line-height: 0.8em; }
-  #intro p {
-    width: 450px; }
   #intro em {
     color: #856150;
     font-style: normal; }
@@ -157,4 +118,11 @@ footer {
 
 #registernowimg:hover {
   background-image: url("../Images/reg_btn_over.png"); }
+
+.register {
+  font-size: 2em; }
+
+@media only screen and (min-width: 767px) {
+  #intro {
+    padding: 185px 0 0 60px; } }
 
