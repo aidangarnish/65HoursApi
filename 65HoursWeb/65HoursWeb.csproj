@@ -68,6 +68,9 @@
   <ItemGroup>
     <Content Include="app\Home\home.html" />
     <Content Include="app\Login\login.html" />
+    <Content Include="app\Profile\profile.html" />
+    <Content Include="app\Profile\ProfileController.js" />
+    <Content Include="app\Profile\ProfileService.js" />
     <Content Include="app\Register\register.html" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />

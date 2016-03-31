@@ -26,6 +26,13 @@
             templateUrl: 'app/Register/register.html',
             controller: 'RegisterController'
         })
+        .when('/profile', {
+            templateUrl: 'app/Profile/profile.html',
+            controller: 'ProfileController',
+            access: {
+                requiresLogin: true
+            }
+        })
         .when('/home', {
             templateUrl: 'app/Home/home.html'
         })

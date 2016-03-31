@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="angularApp" ng-cloak>
 <head>
     <title>65 hours</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
     <base href="/">
 
 </head>
-<body ng-app="angularApp">
+<body ng-controller="ApplicationController as applicationCtrl">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -27,8 +27,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#login">Login</a></li>
-                    <li><a href="#register">Register</a></li>
+                    <li ng-hide="applicationCtrl.isAuthenticated"><a href="#login">Login</a></li>
+                    <li ng-hide="applicationCtrl.isAuthenticated"><a href="#register">Register</a></li>
+                    <li ng-show="applicationCtrl.isAuthenticated"><a href="#profile">{{applicationCtrl.userName}}</a></li>
                 </ul>
             </div>
         </div>

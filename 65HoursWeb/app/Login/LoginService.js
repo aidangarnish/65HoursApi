@@ -28,7 +28,8 @@
         };
 
         loginService.isAuthenticated = function () {
-            return !!SessionService.userId;
+            return !!sessionStorage.getItem('accessToken');
+            //return !!SessionService.userId;
         };
 
 
