@@ -28,7 +28,7 @@
             return promise;
         };
 
-        loginService.logOut = function () {
+        loginService.logout = function () {
             $cookies.remove("username");
             $cookies.remove("accessToken");
             SessionService.userName = '';
