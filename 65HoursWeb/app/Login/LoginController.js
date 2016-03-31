@@ -1,7 +1,7 @@
 ﻿(function () {
 
     var appLogin = angular.module('appLogin', []);
-    appLogin.controller('LoginController', ['config', '$http', '$scope', 'LoginService', function (config, $http, $scope, LoginService) {
+    appLogin.controller('LoginController', ['config', '$http', '$scope', 'LoginService', '$location', function (config, $http, $scope, LoginService, $location) {
 
         this.credentials = {
             username: '',
@@ -13,6 +13,7 @@
             LoginService.login(this.credentials, config).then(function (user) {
                 $scope.applicationCtrl.isAuthenticated = true;
                 $scope.applicationCtrl.userName = user.userName;
+                $location.path('/profile');
             }, function () {
                 alert('failed');
             });
