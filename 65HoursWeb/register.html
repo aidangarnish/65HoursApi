@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>65 hours</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+</head>
+<body ng-app="angularApp" ng-cloak>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <img alt="Brand" src="/images/65hourslogo.png">
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" ng-controller="RegisterController as registerCtrl">
+        <h2 class="col-md-offset-3">Register</h2>
+        <form class="register col-md-6 col-md-offset-3" ng-submit="registerCtrl.register()" novalidate>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="registerCtrl.email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" ng-model="registerCtrl.password">
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input class="form-control" type="password" ng-model="registerCtrl.password2" />
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p id="footeracknowledgements">
+                &copy; All rights reserved 65hours.com
+                <em>development by <a href="http://twitter.com/aidangarnish">aidangarnish</a> | design and illustration by <a href="https://twitter.com/grabbins">grabbins</a></em>
+            </p>
+        </div>
+    </footer>
+
+    <script src="/Scripts/jquery-1.9.1.js"></script>
+    <script src="/Scripts/angular.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/Login/LoginController.js"></script>
+    <script src="/app/Login/LoginService.js"></script>
+    <script src="/app/Register/RegisterController.js"></script>
+    <script src="/app/Register/RegisterService.js"></script>
+    <script src="/app/SessionService/SessionService.js"></script>
+    <script src="/app/ApplicationController.js"></script>
+</body>
+</html>
