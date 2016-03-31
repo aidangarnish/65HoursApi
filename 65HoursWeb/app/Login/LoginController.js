@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var appLogin = angular.module('appLogin');
+    var appLogin = angular.module('appLogin', []);
     appLogin.controller('LoginController', ['config', '$http', '$scope', 'LoginService', function (config, $http, $scope, LoginService) {
 
         this.credentials = {

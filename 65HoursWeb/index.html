@@ -6,8 +6,11 @@
 	<meta charset="utf-8" />
     <link href="/css/bootstrap.css" rel="stylesheet" />
     <link href="/css/style.css" rel="stylesheet" />
+
+    <base href="/">
+
 </head>
-<body>
+<body ng-app="angularApp">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -23,88 +26,36 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Sign In</a></li>
-                    <li><a href="#">Register</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#login">Login</a></li>
+                    <li><a href="#register">Register</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-
-        
+   
     <div class="container body-content">
-        <!-- Page content-->
-        <div class="row">
-            <div class="col-md-6 hidden-xs">
-                <img src="images/green_bg.jpg" />
-            </div>
-            <div class="col-md-6">
-                <div id="intro">
-                    <p>65HOURS IS A TIMEBANK,</p>
-                    <p>A WAY TO PAY FOR SERVICES</p>
-                    <em>WITH TIME RATHER THAN MONEY</em>
-                    <p class="registernow hidden-xs"><a href="register" title="register" id="registernowimg"></a></p>
-                    <div id="preloadregimg" class="hidden-xs"></div>
-                </div>
-            </div>
-         </div>
-
-        <div class="col-md-12 howitworks">
-            <p>HOW DOES IT WORK?</p>
-        </div>
-
-        <div class="row howitworks">
-            <div class="col-md-2 works-section">
-                <div>
-                    <div class="works-row"><img src="images/one.jpg" alt="1" /> REGISTER</div>
-                    <div class="works-row"><img src="images/reg_img.jpg" alt="register" /></div>
-                    <p>Create your 65hours account by clicking the Register button above - it only takes a few seconds.</p>
-                </div>
-            </div>
-            <div class="col-md-2 works-section">
-                <div>
-                    <div class="works-row"><img src="images/two.jpg" alt="2" /> PROFILE</div>
-                    <div class="works-row">
-                        <img src="images/prof_img.jpg" alt="complete profile" /></div>
-                        <p>Complete your profile to let people know what skills you have and where you are.</p>
-                    </div>
-            </div>
-            <div class="col-md-2 works-section">
-                <div>
-                    <div class="works-row"><img src="images/three.jpg" alt="3" /> SEARCH</div>
-                    <div class="works-row">
-                        <img src="images/search_img.jpg" alt="search skills" /></div>
-                        <p>Take a look at what skills other people are offering and if you could make them handy then get in touch.</p>
-                    </div>
-            </div>
-            <div class="col-md-2 works-section">
-                <div>
-                    <div class="works-row"><img src="images/four.jpg" alt="4" /> PAY WITH TIME</div>
-                    <div class="works-row">
-                        <img src="images/pay_img.jpg" alt="pay with time" /></div>
-                        <p>Once the job is done pay for it using the credit from your 65hours account.</p>
-                    </div>
-            </div>
-            <div class="col-md-2 works-section">
-                <div>
-                    <div class="works-row"><img src="images/five.jpg" alt="5" /> BUILD CREDIT!</div>
-                    <div class="works-row">
-                        <img src="images/credit_img.jpg" alt="build credit" /></div>
-                        <p>Build up your credit again by doing jobs for other people.</p>
-                </div>
-            </div>
-               
-            </div>
+      <div ng-view></div>
     </div>
+
     <footer class="footer">
         <div class="container">
             <p id="footeracknowledgements">  &copy; All rights reserved 65hours.com
                 <em>development by <a href="http://twitter.com/aidangarnish">aidangarnish</a> | design and illustration by <a href="https://twitter.com/grabbins">grabbins</a></em></p>
         </div>
+        
     </footer>
 
     <script src="/Scripts/jquery-1.9.1.js"></script>
     <script src="/Scripts/angular.js"></script>
+    <script src="/Scripts/angular-route.js"></script>
     <script src="/Scripts/bootstrap.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/Login/LoginController.js"></script>
+    <script src="/app/Login/LoginService.js"></script>
+    <script src="/app/Register/RegisterController.js"></script>
+    <script src="/app/Register/RegisterService.js"></script>
+    <script src="/app/SessionService/SessionService.js"></script>
+    <script src="/app/ApplicationController.js"></script>
 </body>
 </html>

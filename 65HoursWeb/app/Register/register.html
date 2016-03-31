@@ -1,0 +1,18 @@
+﻿<div ng-controller="RegisterController as registerCtrl">
+    <h2 class="col-md-offset-3">Register</h2>
+    <form class="register col-md-6 col-md-offset-3" ng-submit="registerCtrl.register()" novalidate>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="Email" ng-model="registerCtrl.email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" ng-model="registerCtrl.password">
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input class="form-control" type="password" ng-model="registerCtrl.password2" />
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
