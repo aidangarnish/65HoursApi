@@ -174,10 +174,12 @@ header .navbar-nav li a
     background-image:url('../Images/reg_btn_over.png');
 }
 
-.register{
-    font-size:2em;
-}
 
+form{
+    input{ font-family: $secondary-font-stack;}
+    label{ font-size:3em;}
+   
+}
 @media only screen and (min-width: 767px) {
     #intro{
         padding:185px 0 0 60px;
