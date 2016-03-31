@@ -20,7 +20,7 @@
 
 
         this.logout = function () {
-            sessionStorage.removeItem(tokenKey);
+            LoginService.logout();
         };
 
     }]);

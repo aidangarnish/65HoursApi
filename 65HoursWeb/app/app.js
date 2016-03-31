@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var app = angular.module('angularApp', ['appLogin', 'appRegister', 'appSession', 'appApplication', 'ngRoute']);
+    var app = angular.module('angularApp', ['appLogin', 'appRegister', 'appSession', 'appApplication', 'ngRoute', 'ngCookies']);
 
     
 

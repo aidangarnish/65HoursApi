@@ -30,6 +30,7 @@
                     <li ng-hide="applicationCtrl.isAuthenticated"><a href="#login">Login</a></li>
                     <li ng-hide="applicationCtrl.isAuthenticated"><a href="#register">Register</a></li>
                     <li ng-show="applicationCtrl.isAuthenticated"><a href="#profile">{{applicationCtrl.userName}}</a></li>
+                    <li ng-show="applicationCtrl.isAuthenticated"><a href="" ng-click="applicationCtrl.logOut()">Log Out</a></li>
                 </ul>
             </div>
         </div>

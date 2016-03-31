@@ -3,7 +3,7 @@
     var tokenKey = 'accessToken';
 
     var appLogin = angular.module('appLogin');
-    appLogin.factory('LoginService', ['$http', 'SessionService', function ($http, SessionService) {
+    appLogin.factory('LoginService', ['$http', 'SessionService', '$cookies', function ($http, SessionService, $cookies) {
 
         var loginService = {};
 
@@ -17,7 +17,8 @@
                 headers: { contentType: 'application/x-www-form-urlencoded' }
             }).then(function (response) {
                 alert(response.data.access_token);
-                sessionStorage.setItem(tokenKey, response.data.access_token);
+                $cookies.put("username", response.data.userName);
+                $cookies.put("accessToken", response.data.access_token);
                 SessionService.create(response.data.userName, response.data.access_token);
                 return response.data;
             }, function (error) {
@@ -27,14 +28,11 @@
             return promise;
         };
 
-        loginService.isAuthenticated = function () {
-            return !!sessionStorage.getItem('accessToken');
-            //return !!SessionService.userId;
-        };
-
-
-        loginService.logout = function () {
-            sessionStorage.removeItem(tokenKey);
+        loginService.logOut = function () {
+            $cookies.remove("username");
+            $cookies.remove("accessToken");
+            SessionService.userName = '';
+            SessionService.access_token = '';
         };
 
         return loginService;
