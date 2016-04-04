@@ -19,7 +19,7 @@
                 return true;
             }
             else if (!!$cookies.get("accessToken")) {
-                this.authToken = $cookies.get("accessToken");
+                this.accessToken = $cookies.get("accessToken");
                 this.userName = $cookies.get("username");
                 return true;
             }

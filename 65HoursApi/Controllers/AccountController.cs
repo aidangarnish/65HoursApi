@@ -116,6 +116,28 @@ namespace _65HoursApi.Controllers
             };
         }
 
+        //GET api/Account/User
+        [Route("GetUser")]
+        public async Task<ApplicationUser> GetUser()
+        {
+            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+
+            return user;
+        }
+        //POST api/Account/UpdateUser
+        [Route("UpdateUser")]
+        public async Task<IdentityResult> UpdateUser(ApplicationUser applicationUser)
+        {
+            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+
+            user.FirstName = applicationUser.FirstName;
+            user.LastName = applicationUser.LastName;
+
+            IdentityResult result = await UserManager.UpdateAsync(user);
+
+            return result;
+        }
+
         // POST api/Account/ChangePassword
         [Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
