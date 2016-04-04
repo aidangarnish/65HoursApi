@@ -1,7 +1,5 @@
 ﻿(function () {
 
-    var tokenKey = 'accessToken';
-
     var appProfile = angular.module('appProfile');
     appProfile.factory('ProfileService', ['config', '$http', 'SessionService', '$cookies', function (config, $http, SessionService, $cookies) {
 
