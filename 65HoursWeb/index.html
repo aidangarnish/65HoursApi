@@ -27,7 +27,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#home">Home</a></li>
-                    <li ng-hide="applicationCtrl.isAuthenticated"><a href="#login">Login</a></li>
+                    <li ng-hide="applicationCtrl.isAuthenticated"><a href="#profile">Login</a></li>
                     <li ng-hide="applicationCtrl.isAuthenticated"><a href="#register">Register</a></li>
                     <li ng-show="applicationCtrl.isAuthenticated"><a href="#profile">{{applicationCtrl.userName}}</a></li>
                     <li ng-show="applicationCtrl.isAuthenticated"><a href="" ng-click="applicationCtrl.logout()">Log Out</a></li>

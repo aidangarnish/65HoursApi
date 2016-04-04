@@ -32,7 +32,7 @@
             $cookies.remove("username");
             $cookies.remove("accessToken");
             SessionService.userName = '';
-            SessionService.access_token = '';
+            SessionService.accessToken = '';
         };
 
         return loginService;

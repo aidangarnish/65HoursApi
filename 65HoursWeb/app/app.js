@@ -3,9 +3,11 @@
     var app = angular.module('angularApp', ['appLogin', 'appRegister', 'appSession', 'appApplication', 'ngRoute', 'ngCookies']);
 
     angular.module('angularApp').run(function ($rootScope, $location, SessionService) {
+
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
-            // if route requires auth and user is not logged in
-            if (next.$$route.access.requiresLogin && !SessionService.isAuthenticated()) {
+            // if route requires auth and user is not logged in capture the current path and direct to login
+            if (next.$$route.access.requiresLogin && !SessionService.isAuthenticated()) {                
+                SessionService.postLogInRoute = $location.path();
                 // redirect back to login
                 $location.path('/login');
             }
