@@ -39,7 +39,12 @@ namespace _65Hours.Services
 
         public ResultT<Skill> GetById(int id)
         {
-            throw new NotImplementedException();
+            return _skillRepository.FindById(id);
+        }
+
+        public ResultT<Skill> GetByTitle(string title)
+        {
+            return _skillRepository.Find(s => s.Title == title);
         }
 
         public ResultT<Skill> Save(Skill skill)
