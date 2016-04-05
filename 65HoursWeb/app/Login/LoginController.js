@@ -19,12 +19,6 @@
             });
         };
 
-
-        this.logout = function () {
-            LoginService.logout();
-            $location.path('/home');
-        };
-
     }]);
 
 })();

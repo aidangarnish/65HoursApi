@@ -1,6 +1,7 @@
 ﻿(function () {
 
-    var app = angular.module('angularApp', ['ui.bootstrap', 'appLogin', 'appRegister', 'appSession', 'appApplication', 'ngRoute', 'ngCookies', 'appProfile']);
+    var app = angular.module('angularApp', ['ui.bootstrap', 'appLogin', 'appRegister', 'appSession', 'appApplication', 'ngRoute', 'ngCookies', 'appProfile', 'appProfileTest']);
+
 
     angular.module('angularApp').run(function ($rootScope, $location, SessionService) {
 
@@ -14,12 +15,17 @@
         });
     });
 
+    //interceptor to add API access token to $http requests
     angular.module("angularApp").factory('authInterceptor', [
       "$q", "$window", "$location", "SessionService", function ($q, $window, $location, SessionService) {
           return {
               request: function (config) {
-                  config.headers = config.headers || {};
-                  config.headers.Authorization = 'Bearer ' + SessionService.accessToken; 
+                  if ($location.$$path !== '/login' && SessionService)
+                  {
+                      config.headers = config.headers || {};
+                      config.headers.Authorization = 'Bearer ' + SessionService.accessToken;
+                  }
+                 
                   return config;
               },
               response: function (response) {
@@ -32,14 +38,17 @@
       }
     ]);
 
+    //wire up interceptor
+    app.config(['$httpProvider', function ($httpProvider) {
+        $httpProvider.interceptors.push('authInterceptor');
+    }])
+
     //set up config constants
     app.constant('config', {
         hoursApiUrl: 'https://localhost:44300'
     });
 
-    //app.config(['$httpProvider', function ($httpProvider) {
-    //    $httpProvider.interceptors.push('authInterceptor');
-    //}])
+   
 
     //placed first declaration of the module here to create it
     //other files that are part of this module are declared using
@@ -67,6 +76,15 @@
         .when('/profile', {
             templateUrl: 'app/Profile/profile.html',
             controller: 'ProfileController',
+            controllerAs: 'vm',
+            access: {
+                requiresLogin: true
+            }
+        })
+        .when('/profiletest', {
+            templateUrl: 'app/ProfileTest/profiletest.html',
+            controller: 'ProfileTestController',
+            controllerAs: 'vm',
             access: {
                 requiresLogin: true
             }
@@ -83,7 +101,5 @@
 
         //$locationProvider.html5Mode(true);
     });
-
-    
     
 })();

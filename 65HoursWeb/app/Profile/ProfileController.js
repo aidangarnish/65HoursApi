@@ -1,9 +1,15 @@
 ﻿(function () {
 
     var appProfile = angular.module('appProfile', []);
-    appProfile.controller('ProfileController', ['ProfileService', 'config', '$http', 'SessionService', '$uibModal', function (ProfileService, config, $http, SessionService, $uibModal) {
+    appProfile.controller('ProfileController', ['$scope', 'ProfileService', 'config', '$http', 'SessionService', '$uibModal', function ($scope, ProfileService, config, $http, SessionService, $uibModal) {
 
-        this.open = function (size) {
+        var vm = this;
+        
+        ProfileService.getUser().then(function (response) {
+            vm.user = response.data;
+        });
+
+        vm.open = function (size) {
 
             var modalInstance = $uibModal.open({
                 animation: true,
@@ -11,15 +17,16 @@
                 controller: 'ModalProfileEditCtrl',
                 controllerAs: 'vmModal',
                 size: size,
-                resolve: { appuser: ProfileService.getUser() }
+                resolve: { userResponse: ProfileService.getUser() }
             });
         };
 
     }]);
 
-    angular.module('appProfile').controller('ModalProfileEditCtrl', ['ProfileService', '$uibModalInstance', 'SessionService', 'appuser', function (ProfileService, $uibModalInstance, SessionService, appuser) {
+    angular.module('appProfile').controller('ModalProfileEditCtrl', ['ProfileService', '$uibModalInstance', 'SessionService', 'userResponse',
+        function (ProfileService, $uibModalInstance, SessionService, userResponse) {
 
-        this.user = appuser;
+            this.user = userResponse.data;
 
         this.ok = function () {
             ProfileService.save(this.user);

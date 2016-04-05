@@ -1,6 +1,15 @@
 ﻿<h2>Profile</h2>
 
-<div ng-controller="ProfileController as vm">
+<div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>{{vm.user.FirstName}} {{vm.user.LastName}}</h3>
+           
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-default" ng-click="vm.open()"><i class="fa fa-pencil"></i></button>
 
     <script type="text/ng-template" id="profileEdit.html">
         <div class="modal-header">
@@ -21,12 +30,11 @@
             </form>
         </div>
         <div class="modal-footer">
-            <!--<button class="btn btn-primary" type="button" ng-click="vmModal.ok()">OK</button>-->
-           
+            
         </div>
     </script>
 
-    <button type="button" class="btn btn-default" ng-click="vm.open()"><i class="fa fa-pencil"></i></button>
+   
   
 </div>
 
