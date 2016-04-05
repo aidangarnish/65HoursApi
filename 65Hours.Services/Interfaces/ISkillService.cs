@@ -12,5 +12,6 @@ namespace _65Hours.Services.Interfaces
     {
         ResultT<IEnumerable<Skill>> All();
         ResultT<Skill> GetById(int id);
+        ResultT<Skill> Save(Skill skill);
     }
 }
