@@ -36,7 +36,17 @@ namespace _65HoursApi.Controllers
             }
         }
 
-        // GET: UserSkill
+        [HttpGet]
+        [Route("CurrentUserSkills")]
+        public async Task<ResultT<IEnumerable<UserSkill>>> UserSkills()
+        {
+            var result = new ResultT<UserSkill>();
+
+            ApplicationUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            return _userSkillService.GetByUserId(user.Id);
+        }
+        // POST: Save UserSkill
         [Route("Save")]
         public async Task<ResultT<UserSkill>>  Save(UserSkill userSkill)
         {
@@ -46,9 +56,7 @@ namespace _65HoursApi.Controllers
 
             userSkill.UserId = user.Id;
 
-            _userSkillService.Save(userSkill);
-
-            return result;
+            return _userSkillService.Save(userSkill);
         }
     }
 }

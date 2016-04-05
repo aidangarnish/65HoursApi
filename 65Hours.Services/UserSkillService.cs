@@ -28,7 +28,12 @@ namespace _65Hours.Services
 
         public ResultT<IEnumerable<UserSkill>> GetByUserId(string id)
         {
-            return _userSkillRepository.FindMany(u => u.UserId == id);
+            var includes = new[]
+            {
+                "Skill"
+            };
+
+            return _userSkillRepository.FindMany(u => u.UserId == id, includes);
         }
 
         public ResultT<UserSkill> Save(UserSkill userSkill)
@@ -36,7 +41,7 @@ namespace _65Hours.Services
             if (userSkill.Id == 0)
             {
                 //check to see if skill exists
-                ResultT<Skill> skillResult = _skillService.GetByTitle(userSkill.SkillTitle);
+                ResultT<Skill> skillResult = _skillService.GetByTitle(userSkill.Skill.Title);
 
                 if (skillResult.Status == ResultStatus.Success)
                 {
@@ -46,7 +51,7 @@ namespace _65Hours.Services
                 else if (skillResult.Status == ResultStatus.FailedNoMatchingData)
                 {
                     //if skill doesn't exist then save new skill and use generated skill id
-                    Skill newSkill = new Skill { Title = userSkill.SkillTitle };
+                    Skill newSkill = new Skill { Title = userSkill.Skill.Title };
                     ResultT<Skill> saveNewSkillResult = _skillService.Save(newSkill);
 
                     if(saveNewSkillResult.Status == ResultStatus.Success)

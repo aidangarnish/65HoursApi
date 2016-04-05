@@ -9,6 +9,10 @@
             vm.user = response.data;
         });
 
+        ProfileService.getUserSkills().then(function (response) {
+            vm.userSkills = response.data.Data;
+        });
+
         vm.openEditProfile = function () {
 
             var modalInstance = $uibModal.open({
@@ -34,7 +38,7 @@
             });
 
             modalInstanceAddSkill.result.then(function (skill) {
-                //update list with new skill
+                vm.userSkills.push(skill);
             });
         };
 

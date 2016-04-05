@@ -36,7 +36,23 @@
             return promise;
         };
 
-        profileService.saveUserSkill= function(userSkill){
+        profileService.getUserSkills = function () {
+            var promise =
+               $http({
+                   method: 'GET',
+                   url: config.hoursApiUrl + '/api/UserSkill/CurrentUserSkills',
+                   headers: { 'Content-Type': 'application/json'}
+               }).then(function (response) {
+                   console.log(response);
+                   return response;
+               }, function (error) {
+                   console.log(error);
+               });
+
+            return promise;
+        };
+
+        profileService.saveUserSkill = function(userSkill){
             var promise = $http({
                 method: 'POST',
                 url: config.hoursApiUrl + '/api/UserSkill/Save',
