@@ -132,6 +132,7 @@ namespace _65HoursApi.Controllers
 
             user.FirstName = applicationUser.FirstName;
             user.LastName = applicationUser.LastName;
+            user.Description = applicationUser.Description;
 
             IdentityResult result = await UserManager.UpdateAsync(user);
 
