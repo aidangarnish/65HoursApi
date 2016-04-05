@@ -12,11 +12,11 @@ namespace _65Hours.Services
 {
     public class SkillService : ISkillService
     {
-        private IHoursRepository<Skill> _skillsRepository;
+        private IHoursRepository<Skill> _skillRepository;
 
         public SkillService(IHoursRepository<Skill> skillRepository)
         {
-            _skillsRepository = skillRepository;
+            _skillRepository = skillRepository;
         }
         public ResultT<IEnumerable<Skill>> All()
         {
@@ -24,7 +24,7 @@ namespace _65Hours.Services
 
             try
             {
-                result.Data = _skillsRepository.All().ToList();
+                result.Data = _skillRepository.All().ToList();
                 result.Status = ResultStatus.Success;
                 
             }
@@ -44,7 +44,7 @@ namespace _65Hours.Services
 
         public ResultT<Skill> Save(Skill skill)
         {
-            if (skill. == 0)
+            if (skill.Id == 0)
             {
                 return _skillRepository.Add(skill);
             }

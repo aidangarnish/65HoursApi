@@ -13,7 +13,7 @@ namespace _65Hours.Repository.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201601141644144_initial"; }
+            get { return "201604051257192_initial"; }
         }
         
         string IMigrationMetadata.Source
