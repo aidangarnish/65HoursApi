@@ -9,14 +9,13 @@
             vm.user = response.data;
         });
 
-        vm.open = function (size) {
+        vm.openEditProfile = function () {
 
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: 'profileEdit.html',
                 controller: 'ModalProfileEditCtrl',
                 controllerAs: 'vmModal',
-                size: size,
                 resolve: { userResponse: ProfileService.getUser() }
             });
 
@@ -24,6 +23,19 @@
                  vm.user = user;
             });
 
+        };
+
+        vm.openAddSkill = function () {
+            var modalInstanceAddSkill = $uibModal.open({
+                animation: true,
+                templateUrl: 'addSkill.html',
+                controller: 'ModalAddSkillCtrl',
+                controllerAs: 'vmSkillModal'
+            });
+
+            modalInstanceAddSkill.result.then(function (skill) {
+                //update list with new skill
+            });
         };
 
     }]);
@@ -42,6 +54,21 @@
             $uibModalInstance.dismiss('cancel');
         };
     }]);
+
+
+    angular.module('appProfile').controller('ModalAddSkillCtrl', ['ProfileService', '$uibModalInstance', 
+        function (ProfileService, $uibModalInstance) {
+
+            var vmSkillModal = this;
+            vmSkillModal.ok = function () {
+               // ProfileService.saveSkill(this.skill);
+                $uibModalInstance.close(this.skill);
+            };
+
+            vmSkillModal.cancel = function () {
+                $uibModalInstance.dismiss('cancel');
+            };
+        }]);
 
 })();
 

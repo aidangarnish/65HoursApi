@@ -128,6 +128,9 @@ form textarea {
 form label {
   font-size: 3em; }
 
+.row {
+  font-family: Verdana; }
+
 @media only screen and (min-width: 767px) {
   #intro {
     padding: 185px 0 0 60px; } }
