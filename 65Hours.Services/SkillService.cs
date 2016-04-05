@@ -41,5 +41,17 @@ namespace _65Hours.Services
         {
             throw new NotImplementedException();
         }
+
+        public ResultT<Skill> Save(Skill skill)
+        {
+            if (skill. == 0)
+            {
+                return _skillRepository.Add(skill);
+            }
+            else
+            {
+                return _skillRepository.Update(skill);
+            }
+        }
     }
 }
