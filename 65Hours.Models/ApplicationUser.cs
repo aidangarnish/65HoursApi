@@ -18,6 +18,7 @@ namespace _65Hours.Models
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Description { get; set; }
         public string Location { get; set; }
         public bool Active { get; set; }
     }

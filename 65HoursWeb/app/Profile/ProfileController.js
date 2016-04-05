@@ -19,6 +19,11 @@
                 size: size,
                 resolve: { userResponse: ProfileService.getUser() }
             });
+
+            modalInstance.result.then(function (user) {
+                 vm.user = user;
+            });
+
         };
 
     }]);
@@ -30,7 +35,7 @@
 
         this.ok = function () {
             ProfileService.save(this.user);
-            $uibModalInstance.close();
+            $uibModalInstance.close(this.user);
         };
 
         this.cancel = function () {

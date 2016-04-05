@@ -12,16 +12,13 @@
                 url: config.hoursApiUrl + '/api/Account/GetUser',
                 headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SessionService.accessToken }
             }).then(function (response) {
+                console.log(response);
                 return response;
             }, function (error) {
-                alert(error.data.error_description);
+                console.log(error);
             });
 
             return promise;
-        };
-
-        profileService.getUserStatic = function () {
-            return  { FirstName: 'AidanStatic', LastName: 'GarnishedStatic'};
         };
 
         profileService.save = function (user) {
@@ -31,9 +28,9 @@
                 data: user,
                 headers: { 'Content-Type': 'application/json' }
             }).then(function (response) {
-                alert(response);               
+                console.log(response);
             }, function (error) {
-                alert(error.data.error_description);
+                console.log(error);
             });
 
             return promise;
