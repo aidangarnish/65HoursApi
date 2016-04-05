@@ -42,7 +42,7 @@
                     <label for="description">Description</label>
                     <textarea type="text" class="form-control" rows="3" id="description" placeholder="Tell us a bit about yourself..." ng-model="vmModal.user.Description"></textarea>
                 </div>
-                <button class="btn btn-default" type="submit" ng-click="vmModal.ok()">Save</button>
+                <button class="btn btn-default" type="submit">Save</button>
                 <button class="btn btn-warning" type="button" ng-click="vmModal.cancel()">Cancel</button>
             </form>
         </div>
@@ -59,9 +59,9 @@
             <form ng-submit="vmSkillModal.ok()" novalidate>
                 <div class="form-group">
                     <label for="skill">Skill</label>
-                    <input type="text" class="form-control" id="skill" ng-model="vmSkillModal.skill">
+                    <input type="text" class="form-control" id="skill" ng-model="vmSkillModal.userSkill.SkillTitle">
                 </div>
-                <button class="btn btn-default" type="submit" ng-click="vmSkillModal.ok()">Save</button>
+                <button class="btn btn-default" type="submit">Save</button>
                 <button class="btn btn-warning" type="button" ng-click="vmSkillModal.cancel()">Cancel</button>
             </form>
         </div>       

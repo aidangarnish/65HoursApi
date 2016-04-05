@@ -61,8 +61,8 @@
 
             var vmSkillModal = this;
             vmSkillModal.ok = function () {
-               // ProfileService.saveSkill(this.skill);
-                $uibModalInstance.close(this.skill);
+                ProfileService.saveUserSkill(vmSkillModal.userSkill);
+                $uibModalInstance.close(vmSkillModal.userSkill.SkillTitle);
             };
 
             vmSkillModal.cancel = function () {

@@ -36,6 +36,21 @@
             return promise;
         };
 
+        profileService.saveUserSkill= function(userSkill){
+            var promise = $http({
+                method: 'POST',
+                url: config.hoursApiUrl + '/api/UserSkill/Save',
+                data: userSkill,
+                headers: { 'Content-Type': 'application/json' }
+            }).then(function (response) {
+                console.log(response);
+            }, function (error) {
+                console.log(error);
+            });
+
+            return promise;
+        };
+
         return profileService;
 
     }]);
