@@ -246,6 +246,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SkillController.cs" />
+    <Compile Include="Controllers\UserSkillController.cs" />
     <Compile Include="Filters\RequireHttpsAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -316,6 +317,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Skills\" />
     <Folder Include="Views\Skill\" />
+    <Folder Include="Views\UserSkill\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
