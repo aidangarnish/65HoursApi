@@ -5,22 +5,20 @@ using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 
 namespace _65HoursApi.Controllers
 {
-    [Authorize]
-    [RoutePrefix("api/UserSkill")]
-    public class UserSkillController : ApiController
+    public class UserRequestController : ApiController
     {
-        private IUserSkillService _userSkillService;
+        private IUserRequestService _userRequestService;
         private ApplicationUserManager _userManager;
-        public UserSkillController(IUserSkillService userSkillService, ApplicationUserManager userManager)
+        public UserRequestController(IUserRequestService userRequestService, ApplicationUserManager userManager)
         {
-            _userSkillService = userSkillService;
+            _userRequestService = userRequestService;
             UserManager = userManager;
         }
 
@@ -37,25 +35,25 @@ namespace _65HoursApi.Controllers
         }
 
         [HttpGet]
-        [Route("CurrentUserSkills")]
-        public async Task<ResultT<IEnumerable<UserSkill>>> CurrentUserSkills()
+        [Route("CurrentUserRequests")]
+        public async Task<ResultT<IEnumerable<UserRequest>>> CurrentUserRequests()
         {
-            var result = new ResultT<UserSkill>();
+            var result = new ResultT<UserRequest>();
 
             ApplicationUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            return _userSkillService.GetByUserId(user.Id);
+            return _userRequestService.GetByUserId(user.Id);
         }
 
         // POST: Save UserSkill
         [Route("Save")]
-        public async Task<ResultT<UserSkill>>  Save(UserSkill userSkill)
+        public async Task<ResultT<UserRequest>> Save(UserRequest userRequest)
         {
-            var result = new ResultT<UserSkill>();
+            var result = new ResultT<UserRequest>();
 
             ApplicationUser currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            return _userSkillService.Save(userSkill, currentUser.Id);
+            return _userRequestService.Save(userRequest, currentUser.Id);
         }
 
         // DELETE: Delete UserSkill
@@ -68,9 +66,8 @@ namespace _65HoursApi.Controllers
             ApplicationUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             UserSkill userSkill = new UserSkill { Id = id, UserId = user.Id };
-           
+
             return _userSkillService.Delete(userSkill);
         }
-
     }
 }

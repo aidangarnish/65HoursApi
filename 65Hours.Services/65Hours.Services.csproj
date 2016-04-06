@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\ISkillService.cs" />
+    <Compile Include="Interfaces\IUserRequestService.cs" />
     <Compile Include="Interfaces\IUserSkillService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SkillService.cs" />
+    <Compile Include="UserRequestService.cs" />
     <Compile Include="UserSkillService.cs" />
   </ItemGroup>
   <ItemGroup>

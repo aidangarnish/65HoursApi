@@ -36,10 +36,12 @@ namespace _65Hours.Services
             return _userSkillRepository.FindMany(u => u.UserId == id, includes);
         }
 
-        public ResultT<UserSkill> Save(UserSkill userSkill)
+        public ResultT<UserSkill> Save(UserSkill userSkill, string currentUserId)
         {
             if (userSkill.Id == 0)
             {
+                userSkill.UserId = currentUserId;
+
                 //check to see if skill exists
                 ResultT<Skill> skillResult = _skillService.GetByTitle(userSkill.Skill.Title);
 
@@ -67,12 +69,19 @@ namespace _65Hours.Services
             }
             else
             {
-                return _userSkillRepository.Update(userSkill);
+                if (userSkill.UserId == currentUserId)
+                {
+                    return _userSkillRepository.Update(userSkill);
+                }
+                else
+                {
+                    return new ResultT<UserSkill>() { Status = ResultStatus.OperationFailedIncorrectUser };
+                }
             }
 
         }
 
-        public Result Delete(UserSkill userSkill)
+        public Result Delete(UserSkill userSkill, string currentUserId)
         {
             var result = new Result();
 
@@ -85,13 +94,13 @@ namespace _65Hours.Services
             }
 
             //check that this userSkill belongs to the current user before deleting
-            if(userSkillResult.Data.UserId == userSkill.UserId)
+            if(userSkillResult.Data.UserId == currentUserId)
             {
                return _userSkillRepository.Delete(userSkill.Id);
             }
             else
             {
-                result.Status = ResultStatus.DeleteFailedIncorrectUser;
+                result.Status = ResultStatus.OperationFailedIncorrectUser;
                 return result;
             }
         }

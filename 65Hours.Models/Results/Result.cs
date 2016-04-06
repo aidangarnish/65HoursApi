@@ -26,7 +26,7 @@ namespace _65Hours.Models.Results
         //room for adding more granular failure messages e.g. DatabaseFailure, WebServiceFailure etc etc
         [Description("Failed No Matching Data")]
         FailedNoMatchingData,
-        [Description("Delete Failed Incorrect User")]
-        DeleteFailedIncorrectUser
+        [Description("Operation Failed Incorrect User")]
+        OperationFailedIncorrectUser
     }
 }
