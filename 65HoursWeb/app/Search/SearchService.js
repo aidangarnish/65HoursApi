@@ -5,11 +5,11 @@
 
         var searchService = {};
 
-        seacrchService.search(searchQuery) = function () {
+        searchService.search = function (searchQuery) {
             var promise =
                $http({
                    method: 'GET',
-                   url: config.hoursApiUrl + '/api/Search/Query',
+                   url: config.hoursApiUrl + '/api/UserRequest/ByTitle?title=' + searchQuery,
                    headers: { 'Content-Type': 'application/json' }
                }).then(function (response) {
                    console.log(response);

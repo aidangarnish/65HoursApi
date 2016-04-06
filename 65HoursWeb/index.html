@@ -30,6 +30,7 @@
                     <li ng-hide="applicationCtrl.isAuthenticated"><a href="#profile">Login</a></li>
                     <li ng-hide="applicationCtrl.isAuthenticated"><a href="#register">Register</a></li>
                     <li ng-show="applicationCtrl.isAuthenticated"><a href="#profile">{{applicationCtrl.userName}}</a></li>
+                    <li ng-show="applicationCtrl.isAuthenticated"><a href="#search">Search</a></li>
                     <li ng-show="applicationCtrl.isAuthenticated"><a href="" ng-click="applicationCtrl.logout()">Log Out</a></li>
                 </ul>
             </div>
@@ -66,6 +67,9 @@
         <script src="/app/Profile/ProfileService.js"></script>
         <script src="/app/ProfileTest/ProfileTestController.js"></script>
         <script src="/app/ProfileTest/ProfileTestService.js"></script>
+        <script src="/app/Search/SearchController.js"></script>
+        <script src="/app/Search/SearchService.js"></script>
+
         <script src="/app/directives/angular-confirm.js"></script>
 </body>
 </html>

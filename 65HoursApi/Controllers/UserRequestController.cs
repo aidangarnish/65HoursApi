@@ -40,11 +40,16 @@ namespace _65HoursApi.Controllers
         [Route("CurrentUserRequests")]
         public async Task<ResultT<IEnumerable<UserRequest>>> CurrentUserRequests()
         {
-            var result = new ResultT<UserRequest>();
-
             ApplicationUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             return _userRequestService.GetByUserId(user.Id);
+        }
+
+        [HttpGet]
+        [Route("ByTitle")]
+        public ResultT<IEnumerable<UserRequest>> ByTitle(string title)
+        {
+            return _userRequestService.GetByTitle(title);
         }
 
         // POST: Save UserSkill

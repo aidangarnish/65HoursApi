@@ -29,6 +29,11 @@ namespace _65Hours.Services
             return _userRequestRepository.FindMany(r => r.UserId == id);
         }
 
+        public ResultT<IEnumerable<UserRequest>> GetByTitle(string title)
+        {
+            return _userRequestRepository.FindMany(r => r.Title.Contains(title));
+        }
+
         public ResultT<UserRequest> Save(UserRequest userRequest, string currentUserId)
         {
             if(userRequest.Id   == 0)
@@ -73,6 +78,5 @@ namespace _65Hours.Services
                 return result;
             }
         }
-
     }
 }

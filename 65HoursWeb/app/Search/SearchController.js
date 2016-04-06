@@ -5,11 +5,12 @@
 
         var vm = this;
 
-        vm.search()
-        {
+        vm.search = function() {
             SearchService.search(vm.searchQuery).then(function (response) {
-                vm.searchResults = response.data;
+                vm.searchResults = response.data.Data;
             });
-        }
+        };
+
+       
     }]);
 })();      
