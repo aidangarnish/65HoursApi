@@ -9,6 +9,6 @@ namespace _65Hours.Services.Interfaces
         ResultT<IEnumerable<UserSkill>> GetByUserId(string id);
         ResultT<UserSkill> GetById(int id);
         ResultT<UserSkill> Save(UserSkill userSkill, string currentUserId);
-        Result Delete(UserSkill userSkill, string currentUserId);
+        Result Delete(int id, string currentUserId);
     }
 }

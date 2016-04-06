@@ -61,13 +61,9 @@ namespace _65HoursApi.Controllers
         [Route("Delete")]
         public async Task<Result> Delete(int id)
         {
-            var result = new Result();
+            ApplicationUser currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            ApplicationUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-
-            UserSkill userSkill = new UserSkill { Id = id, UserId = user.Id };
-
-            return _userSkillService.Delete(userSkill);
+            return _userRequestService.Delete(id, currentUser.Id);
         }
     }
 }

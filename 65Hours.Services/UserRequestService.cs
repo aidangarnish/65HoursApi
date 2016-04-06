@@ -50,11 +50,11 @@ namespace _65Hours.Services
             
         }
 
-        public Result Delete(UserRequest userRequest, string currentUserId)
+        public Result Delete(int id, string currentUserId)
         {
             var result = new Result();
 
-            var userRequestResult = GetById(userRequest.Id);
+            var userRequestResult = GetById(id);
 
             if (userRequestResult.Status != ResultStatus.Success)
             {
@@ -65,7 +65,7 @@ namespace _65Hours.Services
             //check that this userRequest belongs to the current user before deleting
             if (userRequestResult.Data.UserId == currentUserId)
             {
-                return _userRequestRepository.Delete(userRequest.Id);
+                return _userRequestRepository.Delete(id);
             }
             else
             {

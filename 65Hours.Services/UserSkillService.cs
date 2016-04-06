@@ -81,11 +81,11 @@ namespace _65Hours.Services
 
         }
 
-        public Result Delete(UserSkill userSkill, string currentUserId)
+        public Result Delete(int id, string currentUserId)
         {
             var result = new Result();
 
-            var userSkillResult = GetById(userSkill.Id);
+            var userSkillResult = GetById(id);
 
             if(userSkillResult.Status != ResultStatus.Success)
             {
@@ -96,7 +96,7 @@ namespace _65Hours.Services
             //check that this userSkill belongs to the current user before deleting
             if(userSkillResult.Data.UserId == currentUserId)
             {
-               return _userSkillRepository.Delete(userSkill.Id);
+               return _userSkillRepository.Delete(id);
             }
             else
             {
