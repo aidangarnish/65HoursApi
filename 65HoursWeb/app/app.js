@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var app = angular.module('angularApp', ['ui.bootstrap', 'appLogin', 'appRegister', 'appSession', 'appApplication', 'ngRoute', 'ngCookies', 'appProfile']);
+    var app = angular.module('angularApp', ['ui.bootstrap', 'appLogin', 'appRegister', 'appSession', 'appApplication', 'ngRoute', 'ngCookies', 'appProfile', 'angular-confirm']);
 
 
     angular.module('angularApp').run(function ($rootScope, $location, SessionService) {

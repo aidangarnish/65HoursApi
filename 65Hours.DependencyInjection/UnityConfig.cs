@@ -45,10 +45,12 @@ namespace _65Hours.DependencyInjection
             //repositories
             container.RegisterType<IHoursRepository<Skill>, HoursRepository<Skill>>();
             container.RegisterType<IHoursRepository<UserSkill>, HoursRepository<UserSkill>>();
+            container.RegisterType<IHoursRepository<UserRequest>, HoursRepository<UserRequest>>();
 
             //services
             container.RegisterType<ISkillService, SkillService>();
             container.RegisterType<IUserSkillService, UserSkillService>();
+            container.RegisterType<IUserRequestService, UserRequestService>();
 
             //ASP.Net identity
             

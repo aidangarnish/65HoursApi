@@ -1,7 +1,7 @@
 ﻿(function () {
 
     var appProfile = angular.module('appProfile', []);
-    appProfile.controller('ProfileController', ['$scope', 'ProfileService', 'config', '$http', 'SessionService', '$uibModal', function ($scope, ProfileService, config, $http, SessionService, $uibModal) {
+    appProfile.controller('ProfileController', ['$scope', '$filter', 'ProfileService', 'config', '$http', 'SessionService', '$uibModal', function ($scope, $filter, ProfileService, config, $http, SessionService, $uibModal) {
 
         var vm = this;
         
@@ -13,11 +13,19 @@
             vm.userSkills = response.data.Data;
         });
 
+        ProfileService.getUserRequests().then(function (response) {
+            vm.userRequests = response.data.Data;
+        });
+
         vm.deleteUserSkill = function (userSkillId) {
             ProfileService.deleteUserSkill(userSkillId).then(function (response) {
-                ProfileService.getUserSkills().then(function (response) {
-                    vm.userSkills = response.data.Data;
-                });
+                vm.userSkills = $filter('filter')(vm.userSkills, { Id: '!' + userSkillId });
+            });
+        };
+
+        vm.deleteUserRequest = function (userRequestId) {
+            ProfileService.deleteUserRequest(userRequestId).then(function (response) {   
+                vm.userRequests = $filter('filter')(vm.userRequests, { Id: '!' + userRequestId });
             });
         };
 
@@ -59,7 +67,7 @@
                 resolve: { userRequest: function () { return userRequest; } }
             });
 
-            modalInstanceAddSkill.result.then(function (userRequest) {
+            modalInstanceAddRequest.result.then(function (userRequest) {
                 vm.userRequests.push(userRequest);
             });
         };
@@ -115,6 +123,7 @@
            else
            {
                vmRequestModal.title = "Edit Request";
+               vmRequestModal.userRequest = userRequest;
            }
            vmRequestModal.ok = function () {
                ProfileService.saveUserRequest(vmRequestModal.userRequest).then(function (response) {

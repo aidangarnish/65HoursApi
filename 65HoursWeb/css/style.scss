@@ -187,6 +187,10 @@ form{
     font-family: $secondary-font-stack;
 }
 
+.modal-body{
+    font-family: $secondary-font-stack;
+}
+
 @media only screen and (min-width: 767px) {
     #intro{
         padding:185px 0 0 60px;

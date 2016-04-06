@@ -12,6 +12,8 @@ using System.Web.Http;
 
 namespace _65HoursApi.Controllers
 {
+    [Authorize]
+    [RoutePrefix("api/UserRequest")]
     public class UserRequestController : ApiController
     {
         private IUserRequestService _userRequestService;

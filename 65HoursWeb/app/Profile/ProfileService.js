@@ -82,6 +82,21 @@
             return promise;
         };
 
+        profileService.getUserRequests = function () {
+            var promise =
+               $http({
+                   method: 'GET',
+                   url: config.hoursApiUrl + '/api/UserRequest/CurrentUserRequests',
+                   headers: { 'Content-Type': 'application/json' }
+               }).then(function (response) {
+                   console.log(response);
+                   return response;
+               }, function (error) {
+                   console.log(error);
+               });
+
+            return promise;
+        };
 
         profileService.saveUserRequest = function (userRequest) {
             var promise = $http({
@@ -98,6 +113,21 @@
 
             return promise;
         };
+
+        profileService.deleteUserRequest = function (userRequestId) {
+            var promise = $http({
+                method: 'Delete',
+                url: config.hoursApiUrl + '/api/UserRequest/Delete?id=' + userRequestId,
+                headers: { 'Content-Type': 'application/json' }
+            }).then(function (response) {
+                console.log(response);
+            }, function (error) {
+                console.log(error);
+            });
+
+            return promise;
+        };
+
         return profileService;
 
     }]);
