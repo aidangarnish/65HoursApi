@@ -5,15 +5,22 @@
 
     appApplication.controller('ApplicationController', ['LoginService', 'SessionService', '$location', function (LoginService, SessionService, $location) {
 
-        this.isAuthenticated = SessionService.isAuthenticated();
+        var applicationCtrl = this;
 
-        this.userName = SessionService.userName;
+        applicationCtrl.isAuthenticated = SessionService.isAuthenticated();
 
-        this.logout = function () {
+        applicationCtrl.userName = SessionService.userName;
+
+        applicationCtrl.logout = function () {
             LoginService.logout();
             this.isAuthenticated = false;
             $location.path('/home');
         };
+
+        applicationCtrl.closeAlert = function (index) {
+            applicationCtrl.alerts.splice(index, 1);
+        };
+
     }]);
 
 })();

@@ -3,11 +3,11 @@
 
     var appRegister = angular.module('appRegister');
 
-    appRegister.factory('RegisterService', ['$http', function ($http) {
+    appRegister.factory('RegisterService', ['$http', 'config', function ($http, config) {
 
         var registerService = {};
 
-        registerService.register = function (data, config) {
+        registerService.register = function (data) {
 
             var promise = $http({
                 method: 'POST',
@@ -17,9 +17,10 @@
                 },
                 data: JSON.stringify(data)
             }).then(function (response) {
-                alert('done');
+                console.log(response);
+                return response;
             }, function (error) {
-                alert(error.data.Message);
+                console.log(error);
             });
 
             return promise;

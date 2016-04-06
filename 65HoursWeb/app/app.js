@@ -20,7 +20,7 @@
       "$q", "$window", "$location", "SessionService", function ($q, $window, $location, SessionService) {
           return {
               request: function (config) {
-                  if (($location.$$path !== '/login' || $location.$$path !== '/register')  && SessionService)
+                  if (($location.$$path !== '/login' && $location.$$path !== '/register')  && SessionService.accessToken)
                   {
                       config.headers = config.headers || {};
                       config.headers.Authorization = 'Bearer ' + SessionService.accessToken;
