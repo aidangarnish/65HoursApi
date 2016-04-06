@@ -47,26 +47,53 @@ namespace _65Hours.Services
                 {
                     //if skill does exist use existing skill id
                     userSkill.SkillId = skillResult.Data.Id;
+                    
+                    //null skill so that a new skill isn't added to the skills table
+                    userSkill.Skill = null;
+
+                    return _userSkillRepository.Add(userSkill);
                 }
                 else if (skillResult.Status == ResultStatus.FailedNoMatchingData)
                 {
-                    //if skill doesn't exist then save new skill and use generated skill id
-                    Skill newSkill = new Skill { Title = userSkill.Skill.Title };
-                    ResultT<Skill> saveNewSkillResult = _skillService.Save(newSkill);
-
-                    if(saveNewSkillResult.Status == ResultStatus.Success)
-                    {
-                        userSkill.SkillId = saveNewSkillResult.Data.Id;                       
-                    }
-                }
-
-                return _userSkillRepository.Add(userSkill);
+                    //if skill doesn't exist then save userSkill 
+                    //Entity Framework will create the new skill and use generated skill id
+                    
+                    return _userSkillRepository.Add(userSkill);
+                } 
+                else
+                {
+                    return new ResultT<UserSkill>() { Status = skillResult.Status };
+                }              
             }
             else
             {
                 return _userSkillRepository.Update(userSkill);
             }
 
+        }
+
+        public Result Delete(UserSkill userSkill)
+        {
+            var result = new Result();
+
+            var userSkillResult = GetById(userSkill.Id);
+
+            if(userSkillResult.Status != ResultStatus.Success)
+            {
+                result.Status = userSkillResult.Status;
+                return result;
+            }
+
+            //check that this userSkill belongs to the current user before deleting
+            if(userSkillResult.Data.UserId == userSkill.UserId)
+            {
+               return _userSkillRepository.Delete(userSkill.Id);
+            }
+            else
+            {
+                result.Status = ResultStatus.DeleteFailedIncorrectUser;
+                return result;
+            }
         }
     }
 }

@@ -13,6 +13,14 @@
             vm.userSkills = response.data.Data;
         });
 
+        vm.deleteUserSkill = function (userSkillId) {
+            ProfileService.deleteUserSkill(userSkillId).then(function (response) {
+                ProfileService.getUserSkills().then(function (response) {
+                    vm.userSkills = response.data.Data;
+                });
+            });
+        };
+
         vm.openEditProfile = function () {
 
             var modalInstance = $uibModal.open({
@@ -37,8 +45,22 @@
                 controllerAs: 'vmSkillModal'
             });
 
-            modalInstanceAddSkill.result.then(function (skill) {
-                vm.userSkills.push(skill);
+            modalInstanceAddSkill.result.then(function (userSkill) {
+                vm.userSkills.push(userSkill);
+            });
+        };
+
+        vm.openRequest = function (userRequest) {
+            var modalInstanceAddRequest = $uibModal.open({
+                animation: true,
+                templateUrl: 'requestModal.html',
+                controller: 'ModalAddRequestCtrl',
+                controllerAs: 'vmRequestModal',
+                resolve: { userRequest: function () { return userRequest; } }
+            });
+
+            modalInstanceAddSkill.result.then(function (userRequest) {
+                vm.userRequests.push(userRequest);
             });
         };
 
@@ -65,14 +87,50 @@
 
             var vmSkillModal = this;
             vmSkillModal.ok = function () {
-                ProfileService.saveUserSkill(vmSkillModal.userSkill);
-                $uibModalInstance.close(vmSkillModal.userSkill.SkillTitle);
+                ProfileService.saveUserSkill(vmSkillModal.userSkill).then(function (response) {
+                    console.log(response);
+                    $uibModalInstance.close(response.data.Data);
+                }, function (error) {
+                    console.log(error);
+                    $uibModalInstance.close();
+                });;
+                
             };
 
             vmSkillModal.cancel = function () {
                 $uibModalInstance.dismiss('cancel');
             };
         }]);
+
+
+    angular.module('appProfile').controller('ModalAddRequestCtrl', ['ProfileService', '$uibModalInstance', 'userRequest',
+       function (ProfileService, $uibModalInstance, userRequest) {
+
+           var vmRequestModal = this;
+
+           if (userRequest === 0)
+           {
+               vmRequestModal.title = "Add Request";
+           }
+           else
+           {
+               vmRequestModal.title = "Edit Request";
+           }
+           vmRequestModal.ok = function () {
+               ProfileService.saveUserRequest(vmRequestModal.userRequest).then(function (response) {
+                   console.log(response);
+                   $uibModalInstance.close(response.data.Data);
+               }, function (error) {
+                   console.log(error);
+                   $uibModalInstance.close();
+               });;
+
+           };
+
+           vmRequestModal.cancel = function () {
+               $uibModalInstance.dismiss('cancel');
+           };
+       }]);
 
 })();
 

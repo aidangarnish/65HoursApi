@@ -60,6 +60,7 @@
                 headers: { 'Content-Type': 'application/json' }
             }).then(function (response) {
                 console.log(response);
+                return response;
             }, function (error) {
                 console.log(error);
             });
@@ -67,6 +68,36 @@
             return promise;
         };
 
+        profileService.deleteUserSkill = function (userSkillId) {
+            var promise = $http({
+                method: 'Delete',
+                url: config.hoursApiUrl + '/api/UserSkill/Delete?id=' + userSkillId,
+                headers: { 'Content-Type': 'application/json' }
+            }).then(function (response) {
+                console.log(response);
+            }, function (error) {
+                console.log(error);
+            });
+
+            return promise;
+        };
+
+
+        profileService.saveUserRequest = function (userRequest) {
+            var promise = $http({
+                method: 'POST',
+                url: config.hoursApiUrl + '/api/UserRequest/Save',
+                data: userRequest,
+                headers: { 'Content-Type': 'application/json' }
+            }).then(function (response) {
+                console.log(response);
+                return response;
+            }, function (error) {
+                console.log(error);
+            });
+
+            return promise;
+        };
         return profileService;
 
     }]);

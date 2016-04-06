@@ -38,7 +38,7 @@ namespace _65HoursApi.Controllers
 
         [HttpGet]
         [Route("CurrentUserSkills")]
-        public async Task<ResultT<IEnumerable<UserSkill>>> UserSkills()
+        public async Task<ResultT<IEnumerable<UserSkill>>> CurrentUserSkills()
         {
             var result = new ResultT<UserSkill>();
 
@@ -46,6 +46,7 @@ namespace _65HoursApi.Controllers
 
             return _userSkillService.GetByUserId(user.Id);
         }
+
         // POST: Save UserSkill
         [Route("Save")]
         public async Task<ResultT<UserSkill>>  Save(UserSkill userSkill)
@@ -58,5 +59,20 @@ namespace _65HoursApi.Controllers
 
             return _userSkillService.Save(userSkill);
         }
+
+        // DELETE: Delete UserSkill
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<Result> Delete(int id)
+        {
+            var result = new Result();
+
+            ApplicationUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            UserSkill userSkill = new UserSkill { Id = id, UserId = user.Id };
+           
+            return _userSkillService.Delete(userSkill);
+        }
+
     }
 }
