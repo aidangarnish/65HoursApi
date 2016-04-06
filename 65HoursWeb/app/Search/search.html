@@ -1,0 +1,21 @@
+﻿<h3>Search</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <form ng-submit="vm.search()" novalidate>
+            <div class="form-group">
+                <label for="search">Search</label>
+                <input type="text" class="form-control" id="search" ng-model="vm.searchQuery">
+            </div>           
+            <button class="btn btn-default" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <ul ng-repeat="searchResult in vm.searchResults">
+            <li>{{searchResult.Title}}</li>
+        </ul>
+    </div>
+</div>

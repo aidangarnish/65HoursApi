@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var app = angular.module('angularApp', ['ui.bootstrap', 'appLogin', 'appRegister', 'appSession', 'appApplication', 'ngRoute', 'ngCookies', 'appProfile', 'angular-confirm']);
+    var app = angular.module('angularApp', ['ui.bootstrap',  'angular-confirm', 'appLogin', 'appRegister', 'appSession', 'appApplication', 'ngRoute', 'ngCookies', 'appProfile', 'appSearch']);
 
 
     angular.module('angularApp').run(function ($rootScope, $location, SessionService) {
@@ -81,9 +81,9 @@
                 requiresLogin: true
             }
         })
-        .when('/profiletest', {
-            templateUrl: 'app/ProfileTest/profiletest.html',
-            controller: 'ProfileTestController',
+        .when('/search', {
+            templateUrl: 'app/Search/search.html',
+            controller: 'SearchController',
             controllerAs: 'vm',
             access: {
                 requiresLogin: true

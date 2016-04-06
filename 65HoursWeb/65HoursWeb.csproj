@@ -73,6 +73,9 @@
     <Content Include="app\Profile\ProfileController.js" />
     <Content Include="app\Profile\ProfileService.js" />
     <Content Include="app\Register\register.html" />
+    <Content Include="app\Search\search.html" />
+    <Content Include="app\Search\SearchController.js" />
+    <Content Include="app\Search\SearchService.js" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
