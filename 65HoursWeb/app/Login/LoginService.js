@@ -20,8 +20,9 @@
                 $cookies.put("accessToken", response.data.access_token);
                 SessionService.create(response.data.userName, response.data.access_token);
                 return response.data;
-            }, function (error) {
+            }, function (error) {                
                 console.log(error);
+                return error;
             });
 
             return promise;

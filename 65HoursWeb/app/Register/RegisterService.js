@@ -21,6 +21,7 @@
                 return response;
             }, function (error) {
                 console.log(error);
+                return error;
             });
 
             return promise;

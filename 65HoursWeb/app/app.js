@@ -32,7 +32,7 @@
                   return response || $q.when(response);
               },
               responseError: function (rejection) {
-                  // your error handler
+                  return $q.reject(rejection);
               }
           };
       }
@@ -41,7 +41,9 @@
     //wire up interceptor
     app.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push('authInterceptor');
-    }])
+   }])
+
+   
 
     //set up config constants
     app.constant('config', {

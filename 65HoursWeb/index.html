@@ -46,7 +46,7 @@
         </script>
 
         <uib-alert ng-repeat="alert in applicationCtrl.alerts" type="{{alert.type}}" 
-                   dismiss-on-timeout="2000"
+                   dismiss-on-timeout="6000"
                     close="applicationCtrl.closeAlert($index)">{{alert.msg}}</uib-alert>
 
 
@@ -75,6 +75,7 @@
         <script src="/app/Register/RegisterService.js"></script>
         <script src="/app/SessionService/SessionService.js"></script>
         <script src="/app/ApplicationController.js"></script>
+        <script src="/app/ApplicationService.js"></script>
         <script src="/app/Profile/ProfileController.js"></script>
         <script src="/app/Profile/ProfileService.js"></script>
         <script src="/app/ProfileTest/ProfileTestController.js"></script>
