@@ -1,14 +1,9 @@
 ﻿using _65Hours.Models.Results;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace _65Hours.Repository.Interfaces
+namespace _65Hours.Services.Interfaces
 {
-    public interface IFileStorageRepository
+    public interface IFileStorageService
     {
         ResultT<string> GetBlobFileSasUri(string containerName, string fileName, bool allowWrite = false);
         ResultT<string> GetBlobContainerSasToken(string containerName, bool allowWrite = false);

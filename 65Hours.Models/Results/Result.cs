@@ -27,6 +27,9 @@ namespace _65Hours.Models.Results
         [Description("Failed No Matching Data")]
         FailedNoMatchingData,
         [Description("Operation Failed Incorrect User")]
-        OperationFailedIncorrectUser
+        OperationFailedIncorrectUser,
+        [Description("Invaolid Parameter")]
+        InvalidParameter
+
     }
 }
