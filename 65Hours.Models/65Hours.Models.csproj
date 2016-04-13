@@ -66,6 +66,7 @@
     <Compile Include="Results\Result.cs" />
     <Compile Include="Results\ResultT.cs" />
     <Compile Include="Skill.cs" />
+    <Compile Include="StorageResponse.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="UserRequest.cs" />
     <Compile Include="UserSkill.cs" />

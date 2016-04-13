@@ -50,6 +50,11 @@ namespace _65Hours.Services
             return result;
         }
 
+        public ResultT<Uri> GetBlobFileUri(string containerName, string fileName)
+        {
+           return _fileStorageRepository.GetBlobFileUri(containerName, fileName);
+        }
+
         public Result UploadFile(string containerName, string fileName, Stream fileStream)
         {
             throw new NotImplementedException();

@@ -46,11 +46,13 @@ namespace _65Hours.DependencyInjection
             container.RegisterType<IHoursRepository<Skill>, HoursRepository<Skill>>();
             container.RegisterType<IHoursRepository<UserSkill>, HoursRepository<UserSkill>>();
             container.RegisterType<IHoursRepository<UserRequest>, HoursRepository<UserRequest>>();
+            container.RegisterType<IFileStorageRepository, AzureFileStorageRepository>();
 
             //services
             container.RegisterType<ISkillService, SkillService>();
             container.RegisterType<IUserSkillService, UserSkillService>();
             container.RegisterType<IUserRequestService, UserRequestService>();
+            container.RegisterType<IFileStorageService, FileStorageService>();
 
             //ASP.Net identity
             

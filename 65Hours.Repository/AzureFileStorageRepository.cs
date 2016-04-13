@@ -1,4 +1,5 @@
 ﻿using _65Hours.Models.Results;
+using _65Hours.Repository.Interfaces;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace _65Hours.Repository
 {
-    public class AzureFileStorageRepository
+    public class AzureFileStorageRepository : IFileStorageRepository
     {
         CloudStorageAccount _storageAccount;
         CloudBlobClient _blobClient;
@@ -116,6 +117,26 @@ namespace _65Hours.Repository
             }
 
             return result;
+        }
+
+        public ResultT<Uri> GetBlobFileUri(string containerName, string fileName)
+        {
+            ResultT<Uri> result = new ResultT<Uri>() { Status = ResultStatus.Success };
+
+            try
+            {
+                var container = _blobClient.GetContainerReference(containerName);
+                var blob = container.GetBlockBlobReference(fileName);
+                result.Data = blob.StorageUri.PrimaryUri;
+                return result;
+            }
+            catch(Exception ex)
+            {
+                result.Status = ResultStatus.Failed;
+                result.Exceptions.Value.Add(ex);
+                return result;
+            }
+
         }
     }
 }
