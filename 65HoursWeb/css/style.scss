@@ -3,6 +3,7 @@ $secondary-font-stack: Verdana;
 $primary-color: #333;
 $primary-background-color: #faf6e8;
 $hours-green-color: #808c7b;
+$hours-light-green-color: #cad9c3;
 $hours-dark-brown-color:#5a4a42;
 $hours-medium-brown-color:#856150;
 $nav-text-color: #fff;
@@ -85,7 +86,7 @@ header .navbar-nav li a
 
 #footeracknowledgements
 {
-    color:#cad9c3;
+    color:$hours-light-green-color;
     padding:20px 0 0 0;
      margin-left:auto;
     margin-right:auto;
@@ -174,7 +175,42 @@ header .navbar-nav li a
     background-image:url('../Images/reg_btn_over.png');
 }
 
-
+.profile
+{
+    .row
+        {
+        padding-top: 20px;      
+    }
+    .col-md-6, .col-md-8{
+        border: 1px solid gray;
+         background-color:#fffef9;
+    }
+    button{
+        margin-top:12px;
+    }
+    .btn{
+        padding:2px 6px;
+    }
+    h3{
+        margin-top:12px;
+    }
+    ul{
+        list-style:none;
+        padding:0;
+    }
+    li{
+        margin:0;
+    }
+    li em{
+        padding:6px;
+        background-color:lightgray;
+        border-radius:3px;
+        font-style:normal;
+    }
+    li button{
+        margin-top:0;
+    }
+}
 form{
     input{ font-family: $secondary-font-stack;}
     textarea { font-family: $secondary-font-stack;}

@@ -17,14 +17,14 @@
                 <a class="navbar-brand" href="/">
                     <img alt="Brand" src="/images/65hourslogo.png">
                 </a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" ng-click="applicationCtrl.isNavCollapsed = !applicationCtrl.isNavCollapsed" aria-expanded="true">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse in" uib-collapse="applicationCtrl.isNavCollapsed" aria-expanded="true">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#home">Home</a></li>
                     <li ng-hide="applicationCtrl.isAuthenticated"><a href="#profile">Login</a></li>

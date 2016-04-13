@@ -119,6 +119,38 @@ header .navbar-nav li a {
 #registernowimg:hover {
   background-image: url("../Images/reg_btn_over.png"); }
 
+.profile .row {
+  padding-top: 20px; }
+
+.profile .col-md-6, .profile .col-md-8 {
+  border: 1px solid gray;
+  background-color: #fffef9; }
+
+.profile button {
+  margin-top: 12px; }
+
+.profile .btn {
+  padding: 2px 6px; }
+
+.profile h3 {
+  margin-top: 12px; }
+
+.profile ul {
+  list-style: none;
+  padding: 0; }
+
+.profile li {
+  margin: 0; }
+
+.profile li em {
+  padding: 6px;
+  background-color: lightgray;
+  border-radius: 3px;
+  font-style: normal; }
+
+.profile li button {
+  margin-top: 0; }
+
 form input {
   font-family: Verdana; }
 
