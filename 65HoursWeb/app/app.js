@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var app = angular.module('angularApp', ['ui.bootstrap',  'angular-confirm', 'appLogin', 'appRegister', 'appSession', 'appApplication', 'ngRoute', 'ngCookies', 'appProfile', 'appSearch']);
+    var app = angular.module('angularApp', ['ui.bootstrap', 'angular-confirm', 'appLogin', 'appRegister', 'appSession', 'appApplication', 'ngRoute', 'ngCookies', 'appProfile', 'appSearch', 'appFileStorage', 'appFileRead']);
 
 
     angular.module('angularApp').run(function ($rootScope, $location, SessionService) {
@@ -57,7 +57,8 @@
     //var appLogin = angular.module('appLogin'); - i.e. without the array param
     //var appLogin = angular.module('appLogin'); - assumes the module has already been created
     //is this the correct approach???
-   // var appLogin = angular.module('appLogin', []);
+    // var appLogin = angular.module('appLogin', []);
+    //var appFileRead = angular.module('appFileRead', []);
 
     app.config(function($routeProvider, $locationProvider) {
         $routeProvider

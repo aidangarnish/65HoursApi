@@ -1,7 +1,8 @@
 ﻿(function () {
 
     var appProfile = angular.module('appProfile', []);
-    appProfile.controller('ProfileController', ['$scope', '$filter', 'ProfileService', 'config', '$http', 'SessionService', '$uibModal', function ($scope, $filter, ProfileService, config, $http, SessionService, $uibModal) {
+    appProfile.controller('ProfileController', ['$scope', '$filter', 'ProfileService', 'config', '$http', 'SessionService', '$uibModal', 'FileStorageService',
+        function ($scope, $filter, ProfileService, config, $http, SessionService, $uibModal, FileStorageService) {
 
         var vm = this;
         
@@ -16,6 +17,15 @@
         ProfileService.getUserRequests().then(function (response) {
             vm.userRequests = response.data.Data;
         });
+
+        vm.UploadFile = function () {
+            var file = vm.uploadme;
+            var extension = file.name.split('.').pop();
+
+            FileStorageService.getFileUploadParams(extension).then(function (response) {
+                azureBlob.upload($scope.config);
+            });
+        };
 
         vm.deleteUserSkill = function (userSkillId) {
             ProfileService.deleteUserSkill(userSkillId).then(function (response) {
