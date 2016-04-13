@@ -62,13 +62,16 @@
             var modalInstanceAddRequest = $uibModal.open({
                 animation: true,
                 templateUrl: 'requestModal.html',
-                controller: 'ModalAddRequestCtrl',
+                controller: 'ModalRequestCtrl',
                 controllerAs: 'vmRequestModal',
                 resolve: { userRequest: function () { return userRequest; } }
             });
 
             modalInstanceAddRequest.result.then(function (userRequest) {
-                vm.userRequests.push(userRequest);
+                var request = $filter('filter')(vm.userRequests, { Id: userRequest.Id });
+                if (!request || request.length <= 0) {
+                    vm.userRequests.push(userRequest);
+                }
             });
         };
 
@@ -111,7 +114,7 @@
         }]);
 
 
-    angular.module('appProfile').controller('ModalAddRequestCtrl', ['ProfileService', '$uibModalInstance', 'userRequest',
+    angular.module('appProfile').controller('ModalRequestCtrl', ['ProfileService', '$uibModalInstance', 'userRequest',
        function (ProfileService, $uibModalInstance, userRequest) {
 
            var vmRequestModal = this;

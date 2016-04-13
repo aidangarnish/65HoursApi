@@ -2,6 +2,7 @@
 $secondary-font-stack: Verdana; 
 $primary-color: #333;
 $primary-background-color: #faf6e8;
+$secondary-background-color: #fffef9;
 $hours-green-color: #808c7b;
 $hours-light-green-color: #cad9c3;
 $hours-dark-brown-color:#5a4a42;
@@ -183,7 +184,7 @@ header .navbar-nav li a
     }
     .col-md-6, .col-md-8{
         border: 1px solid gray;
-         background-color:#fffef9;
+         background-color:$secondary-background-color;
     }
     button{
         margin-top:12px;
