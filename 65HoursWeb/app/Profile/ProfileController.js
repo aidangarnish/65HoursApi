@@ -4,7 +4,8 @@
     appProfile.controller('ProfileController', ['$scope', '$filter', 'ProfileService', 'config', '$http', 'SessionService', '$uibModal', 'FileStorageService', 'azureBlob',
         function ($scope, $filter, ProfileService, config, $http, SessionService, $uibModal, FileStorageService, azureBlob) {
 
-        var vm = this;
+            var vm = this;
+            vm.config = {};
         
         ProfileService.getUser().then(function (response) {
             vm.user = response.data;
@@ -19,18 +20,56 @@
         });
 
         vm.UploadFile = function () {
-            var file = vm.uploadme;
-            var extension = file.name.split('.').pop();
+            var fileToUpload = vm.uploadme;
+            var extension = fileToUpload.name.split('.').pop();
 
             FileStorageService.getFileUploadParams(extension).then(function (response) {
 
-                var config = {};
-                config.baseUrl = response.data.BlobURL;
-                config.sasToken = response.data.BlobSASToken;
-                config.file = file.data;
-                blockSize = 1024 * 32;
+           vm.config =
+           {
+               baseUrl: response.data.BlobURL,
+               sasToken: response.data.BlobSASToken,
+               file: fileToUpload.data,
+               blockSize: 1024 * 32,
 
-                azureBlob.upload(config);
+               progress: function (amount) {
+                   console.log("Progress - " + amount);
+                   console.log(amount);
+               },
+               complete: function () {
+                   console.log("Completed!");
+                   //uploadSvc.postItem(
+                   //    {
+                   //        'ID': results.ID,
+                   //        'ServerFileName': results.ServerFileName,
+                   //        'StorageAccountName': results.StorageAccountName,
+                   //        'BlobURL': results.BlobURL
+                   //    }).success(function () {
+                   //        $scope.uploadComplete = true;
+                   //    }).error(function (err) {
+                   //        console.log("Error - " + err);
+                   //        $scope.error = err;
+                   //        $scope.uploadComplete = false;
+                   //    });
+               },
+               error: function (data, status, err, config) {
+                   console.log("Error - " + data);
+               }
+           };
+                azureBlob.upload(vm.config);
+
+
+                //var config = {};
+                //config.baseUrl = response.data.BlobURL;
+                //config.sasToken = response.data.BlobSASToken;
+                //config.file = file.data;
+                //blockSize = 1024 * 32;
+
+                //azureBlob.upload(config).complete(function (response) {
+                //    var response = response;
+                //}, function (error) {
+                //    console.log(error);
+                //});
             });
         };
 
