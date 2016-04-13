@@ -1,8 +1,8 @@
 ﻿(function () {
 
     var appProfile = angular.module('appProfile', []);
-    appProfile.controller('ProfileController', ['$scope', '$filter', 'ProfileService', 'config', '$http', 'SessionService', '$uibModal', 'FileStorageService',
-        function ($scope, $filter, ProfileService, config, $http, SessionService, $uibModal, FileStorageService) {
+    appProfile.controller('ProfileController', ['$scope', '$filter', 'ProfileService', 'config', '$http', 'SessionService', '$uibModal', 'FileStorageService', 'azureBlob',
+        function ($scope, $filter, ProfileService, config, $http, SessionService, $uibModal, FileStorageService, azureBlob) {
 
         var vm = this;
         
@@ -23,7 +23,14 @@
             var extension = file.name.split('.').pop();
 
             FileStorageService.getFileUploadParams(extension).then(function (response) {
-                azureBlob.upload($scope.config);
+
+                var config = {};
+                config.baseUrl = response.data.BlobURL;
+                config.sasToken = response.data.BlobSASToken;
+                config.file = file.data;
+                blockSize = 1024 * 32;
+
+                azureBlob.upload(config);
             });
         };
 
