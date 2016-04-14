@@ -5,8 +5,12 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <button type="button" class="btn btn-default pull-right" ng-click="vm.openEditProfile()"><i class="fa fa-pencil"></i></button>
+            <img height="50" width="50" ng-show="vm.showProfilePic" ng-src="{{vm.user.ProfilePicSasUri}}" />
             <h3>{{vm.user.FirstName}} {{vm.user.LastName}}</h3>
             <p>{{vm.user.Description}}</p>
+            
+            <input type="file" fileread="vm.fileToUpload" /> <em>{{vm.FileUploadProgress}}</em>
+            <button type="button" class="btn btn-default" ng-click="vm.UploadProfilePic()">Upload Profile Pic</button>
         </div>
     </div>
 
@@ -17,8 +21,7 @@
              <ul ng-repeat="userSkill in vm.userSkills">
                 <li><em>{{userSkill.Skill.Title}}</em> <button type="button" class="btn btn-default" ng-click="vm.deleteUserSkill(userSkill.Id)" confirm="Are you sure you want to delete the skill {{userSkill.Skill.Title}}?" confirm-title="Confirm skill deletion"><i class="fa fa-close"></i></button></li>
             </ul>
-            <input type="file" fileread="vm.fileToUpload" /> <em>{{vm.FileUploadProgress}}</em>
-            <button type="button" class="btn btn-default" ng-click="vm.UploadProfilePic()">Upload Profile Pic</button>
+           
         </div>
     </div>
 
@@ -52,9 +55,13 @@
                     <label for="description">Description</label>
                     <textarea type="text" class="form-control" rows="3" id="description" placeholder="Tell us a bit about yourself..." ng-model="vmModal.user.Description"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="profilepic">Profile Picture</label>
+                    <input type="file" id="profilepic" fileread="vmModal.fileToUpload" />
+                </div>
                 <button class="btn btn-default" type="submit">Save</button>
                 <button class="btn btn-warning" type="button" ng-click="vmModal.cancel()">Cancel</button>
-            </form>
+</form>
         </div>
         <div class="modal-footer">
             

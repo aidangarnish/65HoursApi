@@ -17,6 +17,8 @@ using _65HoursApi.Models;
 using _65HoursApi.Providers;
 using _65HoursApi.Results;
 using _65Hours.Models;
+using _65Hours.Services.Interfaces;
+using System.Configuration;
 
 namespace _65HoursApi.Controllers
 {
@@ -26,17 +28,20 @@ namespace _65HoursApi.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private IFileStorageService _fileStorageService;
 
         public AccountController()
         {
         }
 
         public AccountController(ApplicationUserManager userManager
-            , ISecureDataFormat<AuthenticationTicket> accessTokenFormat
+            , ISecureDataFormat<AuthenticationTicket> accessTokenFormat,
+             IFileStorageService fileStorageService
             )
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
+            _fileStorageService = fileStorageService;
         }
 
         public ApplicationUserManager UserManager
@@ -124,6 +129,18 @@ namespace _65HoursApi.Controllers
 
             return user;
         }
+
+        //GET api/Account/User
+        [Route("GetProfileImageSasUrl")]
+        public async Task<string> GetProfileImageSasUrl()
+        {
+            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+
+            var result = _fileStorageService.GetBlobFileSasUri(ConfigurationManager.AppSettings["ProfileImageContainer"], user.ProfilePic);
+
+            return result.Data;
+        }
+        
         //POST api/Account/UpdateUser
         [Route("UpdateUser")]
         public async Task<IdentityResult> UpdateUser(ApplicationUser applicationUser)
@@ -133,6 +150,7 @@ namespace _65HoursApi.Controllers
             user.FirstName = applicationUser.FirstName;
             user.LastName = applicationUser.LastName;
             user.Description = applicationUser.Description;
+            user.ProfilePic = applicationUser.ProfilePic;
 
             IdentityResult result = await UserManager.UpdateAsync(user);
 

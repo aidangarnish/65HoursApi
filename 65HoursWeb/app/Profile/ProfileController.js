@@ -6,9 +6,15 @@
 
             var vm = this;
             vm.uploadConfig = {};
+            $scope.applicationCtrl.alerts = [];
         
         ProfileService.getUser().then(function (response) {
             vm.user = response.data;
+        });
+
+        ProfileService.getProfileImageSasUrl().then(function (response) {
+            vm.user.ProfilePicSasUri = response.data;
+            vm.showProfilePic = (response.data != null && response.data != '') ? true : false;
         });
 
         ProfileService.getUserSkills().then(function (response) {
@@ -21,6 +27,12 @@
 
         vm.UploadProfilePic = function () {
 
+            if (!vm.fileToUpload)
+            {
+                //setup warning and return
+                $scope.applicationCtrl.alerts.push({ type: 'danger', msg: 'Please select a file' });
+                return;
+            }
             var extension = vm.fileToUpload.name.split('.').pop();
 
             FileStorageService.getFileUploadParams(extension).then(function (response) {
@@ -39,15 +51,19 @@
                            console.log(amount);
                            vm.FileUploadProgress = amount;
                        },
-                       complete: function (complete) {
+                       complete: function () {
                            console.log("Completed!");
                            var user = vm.user;
                            user.ProfilePic = vm.profilePicUploadParams.data.ServerFileName;
 
                            //call service to update user with profile image filename
-                           ProfileService.save(user);
-
-                           //call service to get profile image url
+                           ProfileService.save(user).then(function () {
+                               //call service to get profile image sas url
+                               ProfileService.getProfileImageSasUrl().then(function (response) {
+                                   vm.user.ProfilePicSasUri = response.data;
+                                   vm.showProfilePic = (response.data != null && response.data != '') ? true : false;
+                               });
+                           });                       
                        },
                        error: function (data, status, err, config) {
                            console.log("Error - " + data);
@@ -124,7 +140,8 @@
 
             this.user = userResponse.data;
 
-        this.ok = function () {
+            this.ok = function () {
+                var file = this.fileToUpload;
             ProfileService.save(this.user);
             $uibModalInstance.close(this.user);
         };

@@ -21,6 +21,23 @@
             return promise;
         };
 
+        profileService.getProfileImageSasUrl = function () {
+            var promise =
+               $http({
+                   method: 'GET',
+                   url: config.hoursApiUrl + '/api/Account/GetProfileImageSasUrl',
+                   headers: { 'Content-Type': 'application/json' }
+               }).then(function (response) {
+                   console.log(response);
+                   return response;
+               }, function (error) {
+                   console.log(error);
+                   return error;
+               });
+
+            return promise;
+        };
+
         profileService.save = function (user) {
             var promise = $http({
                 method: 'POST',
