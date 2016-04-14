@@ -5,7 +5,7 @@
         function ($scope, $filter, ProfileService, config, $http, SessionService, $uibModal, FileStorageService, azureBlob) {
 
             var vm = this;
-            vm.config = {};
+            vm.uploadConfig = {};
         
         ProfileService.getUser().then(function (response) {
             vm.user = response.data;
@@ -19,57 +19,43 @@
             vm.userRequests = response.data.Data;
         });
 
-        vm.UploadFile = function () {
-            var fileToUpload = vm.uploadme;
-            var extension = fileToUpload.name.split('.').pop();
+        vm.UploadProfilePic = function () {
+
+            var extension = vm.fileToUpload.name.split('.').pop();
 
             FileStorageService.getFileUploadParams(extension).then(function (response) {
+   
+                vm.profilePicUploadParams = response;
 
-           vm.config =
-           {
-               baseUrl: response.data.BlobURL,
-               sasToken: response.data.BlobSASToken,
-               file: fileToUpload.data,
-               blockSize: 1024 * 32,
+                   vm.uploadConfig =
+                   {
+                       baseUrl: response.data.BlobURL,
+                       sasToken: response.data.BlobSASToken,
+                       file: vm.fileToUpload,
+                       blockSize: 1024 * 32,
 
-               progress: function (amount) {
-                   console.log("Progress - " + amount);
-                   console.log(amount);
-               },
-               complete: function () {
-                   console.log("Completed!");
-                   //uploadSvc.postItem(
-                   //    {
-                   //        'ID': results.ID,
-                   //        'ServerFileName': results.ServerFileName,
-                   //        'StorageAccountName': results.StorageAccountName,
-                   //        'BlobURL': results.BlobURL
-                   //    }).success(function () {
-                   //        $scope.uploadComplete = true;
-                   //    }).error(function (err) {
-                   //        console.log("Error - " + err);
-                   //        $scope.error = err;
-                   //        $scope.uploadComplete = false;
-                   //    });
-               },
-               error: function (data, status, err, config) {
-                   console.log("Error - " + data);
-               }
-           };
-                azureBlob.upload(vm.config);
+                       progress: function (amount) {
+                           console.log("Progress - " + amount);
+                           console.log(amount);
+                           vm.FileUploadProgress = amount;
+                       },
+                       complete: function (complete) {
+                           console.log("Completed!");
+                           var user = vm.user;
+                           user.ProfilePic = vm.profilePicUploadParams.data.ServerFileName;
 
+                           //call service to update user with profile image filename
+                           ProfileService.save(user);
 
-                //var config = {};
-                //config.baseUrl = response.data.BlobURL;
-                //config.sasToken = response.data.BlobSASToken;
-                //config.file = file.data;
-                //blockSize = 1024 * 32;
+                           //call service to get profile image url
+                       },
+                       error: function (data, status, err, config) {
+                           console.log("Error - " + data);
+                       }
+                   };
 
-                //azureBlob.upload(config).complete(function (response) {
-                //    var response = response;
-                //}, function (error) {
-                //    console.log(error);
-                //});
+                   azureBlob.upload(vm.uploadConfig);
+
             });
         };
 

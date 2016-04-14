@@ -99,6 +99,10 @@
     <Compile Include="Migrations\201604060732012_userskill_skill_fk.Designer.cs">
       <DependentUpon>201604060732012_userskill_skill_fk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604141423557_user_profilepic.cs" />
+    <Compile Include="Migrations\201604141423557_user_profilepic.Designer.cs">
+      <DependentUpon>201604141423557_user_profilepic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -118,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604060732012_userskill_skill_fk.resx">
       <DependentUpon>201604060732012_userskill_skill_fk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604141423557_user_profilepic.resx">
+      <DependentUpon>201604141423557_user_profilepic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

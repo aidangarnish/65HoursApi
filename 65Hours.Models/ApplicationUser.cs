@@ -20,6 +20,7 @@ namespace _65Hours.Models
         public string LastName { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
+        public string ProfilePic { get; set; }
         public bool Active { get; set; }
     }
 }

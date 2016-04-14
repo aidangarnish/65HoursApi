@@ -17,8 +17,8 @@
              <ul ng-repeat="userSkill in vm.userSkills">
                 <li><em>{{userSkill.Skill.Title}}</em> <button type="button" class="btn btn-default" ng-click="vm.deleteUserSkill(userSkill.Id)" confirm="Are you sure you want to delete the skill {{userSkill.Skill.Title}}?" confirm-title="Confirm skill deletion"><i class="fa fa-close"></i></button></li>
             </ul>
-            <input type="file" fileread="vm.uploadme" />
-            <button type="button" class="btn btn-default" ng-click="vm.UploadFile()">Upload</button>
+            <input type="file" fileread="vm.fileToUpload" /> <em>{{vm.FileUploadProgress}}</em>
+            <button type="button" class="btn btn-default" ng-click="vm.UploadProfilePic()">Upload Profile Pic</button>
         </div>
     </div>
 

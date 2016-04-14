@@ -8,17 +8,10 @@
              },
              link: function (scope, element, attributes) {
                  element.bind("change", function (changeEvent) {
-                     var fileread = {};
-                     fileread.name = changeEvent.target.files[0].name;
-                     var reader = new FileReader();
-                     reader.onload = function (loadEvent) {
-                         scope.$apply(function () {
-                             fileread.data = loadEvent.target.result;
-                             scope.fileread = fileread;
-                             
-                         });
-                     }
-                     reader.readAsDataURL(changeEvent.target.files[0]);
+                   
+                     scope.$apply(function () {
+                         scope.fileread = changeEvent.target.files[0];                             
+                      });                 
                  });
              }
          }

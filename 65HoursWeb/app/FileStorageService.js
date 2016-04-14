@@ -22,6 +22,23 @@
             return promise;
         };
 
+        fileStorageService.getProfileImageSasUrl = function (filename) {
+            var promise =
+               $http({
+                   method: 'GET',
+                   url: config.hoursApiUrl + '/api/FileStorage/ProfileImageSasUrl?filename=' + filename,
+                   headers: { 'Content-Type': 'application/json' }
+               }).then(function (response) {
+                   console.log(response);
+                   return response;
+               }, function (error) {
+                   console.log(error);
+                   return error;
+               });
+
+            return promise;
+        };
+
         return fileStorageService;
 
     }]);

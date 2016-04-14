@@ -17,13 +17,25 @@
 
     //interceptor to add API access token to $http requests
     angular.module("angularApp").factory('authInterceptor', [
-      "$q", "$window", "$location", "SessionService", function ($q, $window, $location, SessionService) {
+      "$q", "$window", "$location", "SessionService", '$filter', function ($q, $window, $location, SessionService, $filter) {
           return {
               request: function (config) {
                   if (($location.$$path !== '/login' && $location.$$path !== '/register')  && SessionService.accessToken)
                   {
                       config.headers = config.headers || {};
-                      config.headers.Authorization = 'Bearer ' + SessionService.accessToken;
+
+                      //if this is a call to Azure Storage then don't add the Authorization header
+                      var isAzureStorageCall = false;
+                      angular.forEach(config.headers, function (value, key) {
+                          if ((key === 'x-ms-blob-type' && value === 'BlockBlob') || key === 'x-ms-blob-content-type')
+                          {
+                              isAzureStorageCall = true;
+                          }
+                      });
+
+                      if (!config.headers.Authorization && !isAzureStorageCall) {
+                          config.headers.Authorization = 'Bearer ' + SessionService.accessToken;
+                      }
                   }
                  
                   return config;
